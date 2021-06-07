@@ -1,0 +1,14 @@
+.ArtistPageBtn {
+    display: rgb(228, 101, 101);
+    /* width: 10px; */
+    height: 50px;
+    /* line-height: 40px; */
+    border: 1px #43eeee solid;
+    margin: 15px auto;
+    background-color: #43eeee;
+    text-align: center;
+    cursor: pointer;
+
+    color: #333;
+    transition: all 0.9s, color 0.3;
+}

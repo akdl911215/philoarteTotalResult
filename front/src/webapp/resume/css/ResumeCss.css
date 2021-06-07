@@ -1,0 +1,12 @@
+.img-wrap {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.img-wrap .img-box {
+  float: left;
+  margin: 0.6%;
+  overflow: hidden;
+  margin-top: 0px;
+  margin-left: 30px;
+}

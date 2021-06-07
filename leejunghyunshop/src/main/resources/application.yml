@@ -1,0 +1,40 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/root?allowPublicKeyRetrieval=true
+    username: root
+    password: 456123
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+leejunghyunshop:
+  philoarte:
+    upload:
+      path: C:\update\artists
+
+philo:
+  arte:
+    upload:
+      path: c:\update
+
+shop:
+  legossol:
+    upload:
+      path: C:\update\funding
+
+security:
+  jwt:
+    secret: secret-value
+
+UserController:
+  signup: Creates user and returns its JWT token
+  signin: Authenticates user and returns its JWT token

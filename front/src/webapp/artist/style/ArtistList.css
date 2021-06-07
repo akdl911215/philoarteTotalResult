@@ -1,0 +1,30 @@
+.buttonSelectList1 {
+    background-color: #9deaf8;
+    color: white;
+    padding: 14px 50px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    border-color: red;
+}
+.buttonSelectList2 {
+    background-color: #71ee77;
+    color: white;
+    padding: 14px 50px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    border-color: red;
+}
+.buttonSelectList3 {
+    background-color: #e76dd3;
+    color: white;
+    padding: 14px 50px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    border-color: red;
+}

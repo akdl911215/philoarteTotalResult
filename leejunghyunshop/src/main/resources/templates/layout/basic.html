@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:gragment="setContent(content)">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Sidebar = Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.css}" rel="stylesheet">
+
+    <!-- Custom style for this template -->
+    <link th:href="@{/css/simple-sidebar.css}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link th:herf="@{/vendor/bootstrap/css/bootstrap.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/simple-sidebar.css}" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.js}"></script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- th:replace="fragment경로::fragment이름"속성은 해당 영역을
+        fragment로 치환하겠다 -->
+        <th:block th:replace = "${content}"></th:block>
+    </div>
+
+</body>
+</th:block>
+</html>

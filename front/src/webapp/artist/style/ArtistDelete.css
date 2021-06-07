@@ -1,0 +1,10 @@
+.deleteButtonSelectList {
+    background-color: #d5ec81;
+    color: white;
+    padding: 14px 50px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    border-color: red;
+}

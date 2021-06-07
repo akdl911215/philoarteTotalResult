@@ -1,0 +1,67 @@
+[
+    {
+        "artistId": 1,
+        "username": "abc",
+        "password": "$2a$10$xxCbZwbwciy/pbX2MhaF9.odEZqeJ9NYo2UUouAn/nXyXcKxUxT9y",
+        "name": "leejunghyun",
+        "email": "akdl911215@naver.com",
+        "phoneNumber": "010-5093-9902",
+        "address": "seoul",
+        "affiliation": "bitcamp",
+        "roles": [
+            "USER"
+        ]
+    },
+    {
+        "artistId": 2,
+        "username": "abcd",
+        "password": "$2a$10$El45M88IS5DmViE96ElnU.U3DRwpC.tj8/UW3vY4IsDtOqNQNguLm",
+        "name": "leejunghyun2",
+        "email": "akdl9112152@naver.com",
+        "phoneNumber": "010-5093-9902",
+        "address": "seoul",
+        "affiliation": "bitcamp",
+        "roles": [
+            "USER"
+        ]
+    },
+    {
+        "artistId": 3,
+        "username": "abcde",
+        "password": "$2a$10$ev.inmmG2ZUbcY1RxezWQuc8g7M1GKnNPTDZN/5dyiFLhE8oBwdvu",
+        "name": "leejunghyun23",
+        "email": "akdl91121523@naver.com",
+        "phoneNumber": "010-5093-9902",
+        "address": "seoul",
+        "affiliation": "bitcamp",
+        "roles": [
+            "USER"
+        ]
+    },
+    {
+        "artistId": 4,
+        "username": "abcdef",
+        "password": "$2a$10$E0q.YPuv2RtoV5QsG.rnLOaVsUhKH2j3w/yXJkrUwrNwOxPmKnOqG",
+        "name": "leejunghyun234",
+        "email": "akdl911215234@naver.com",
+        "phoneNumber": "010-5093-9902",
+        "address": "seoul",
+        "affiliation": "bitcamp",
+        "roles": [
+            "USER"
+        ]
+    },
+    {
+        "artistId": 5,
+        "username": "abcdefg",
+        "password": "$2a$10$p4f.E.s/Qmbw6uLMFpw9qegD3v.Q75OhFdg4La.X8mIg4m2nxWkBO",
+        "name": "leejunghyun2345",
+        "email": "akdl9112152345@naver.com",
+        "phoneNumber": "010-5093-9902",
+        "address": "seoul",
+        "affiliation": "bitcamp",
+        "roles": [
+            "USER"
+        ]
+    }
+]

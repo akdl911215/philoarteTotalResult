@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <h1 class="mt-4">Artist List Page</h1>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ArtistId</th>
+                <th scope="col">username</th>
+                <th scope="col">name</th>
+                <th scope="col">email</th>
+                <th scope="col">phoneNumber</th>
+                <th scope="col">address</th>
+                <th scope="col">school</th>
+                <th scope="col">department</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- th:each = "변수 : ${목록}" -->
+            <tr th:each="dto : ${result.dtoList}" >
+                <th scope="row">[[$dto.ArtistId}]]</th>
+                <td>[[${dto.username}]]</td>
+                <td>[[${dto.name}]]</td>
+                <td>[[${dto.email}]]</td>
+                <td>[[${dto.phoneNumber}]]</td>
+                <td>[[${dto.address}]]</td>
+                <td>[[${dto.school}]]</td>
+                <td>[[${dto.department}]]</td>
+                <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </th:block>
+</th:block>
+
+
+</html>
