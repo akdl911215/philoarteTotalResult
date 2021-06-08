@@ -7,6 +7,7 @@ import api.philoarte.leejunghyunshop.artist.domain.dto.ArtistFileDto;
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageRequestDto;
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageResultDto;
 import api.philoarte.leejunghyunshop.common.util.ModelMapperUtils;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;

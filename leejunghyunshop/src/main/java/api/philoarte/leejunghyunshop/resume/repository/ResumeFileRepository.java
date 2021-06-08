@@ -17,6 +17,8 @@ interface ResumeFileCustomRepository {
 @Transactional
 public interface ResumeFileRepository extends JpaRepository<ResumeFile, Long>, ResumeFileCustomRepository {
 
+
+
     @Query("SELECT r from ResumeFile r WHERE r.resume.resumeId= :resumeId")
     List<ResumeFile> getAllForRemove(@Param("resumeId") Long resumeId);
 

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Philo-Arte",
+    "path": "#home"
+     
+  },
+  {
+    "id": 2,
+    "title": "Art",
+    "path": "/art"
+  },
+  {
+    "id": 3,
+    "title": "Resume",
+    "path": "/resume/home"
+  },
+  {
+    "id": 4,
+    "title": "Funding",
+    "path": "/funding/list"
+  },
+
+  {
+    "id": 5,
+    "title": "Review",
+    "path": "/reviews/review_list"
+  },
+  {
+    "id": 6,
+    "title": "Log Out",
+    "path": "/artist/artist_logout"
+  },
+  {
+    "id": 7,
+    "title": "MyPage",
+    "path": "/artist/artist_mypage"
+  },
+  {
+    "id": 8,
+    "title": "User List",
+    "path": "/artist/artist_page_list"
+  }
+]

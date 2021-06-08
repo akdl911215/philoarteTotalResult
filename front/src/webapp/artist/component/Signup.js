@@ -82,13 +82,10 @@ const Signup = () => {
         console.log(signup.department);
         console.log('==============================');
 
-        // const param = { formData: formData, username: username, password: password, name: name, email: email, phoneNumber: phoneNumber, address: address, school: school, department: department };
-
-        // await dispatch(signupPage(signup));
         await dispatch(signupPage(formData));
         console.log('dispatch formData : ', formData);
-        // console.log('dispatch signup : ', signup);
-        history.push('/artists/artists_signin');
+
+        // history.push('/artists/artists_signin');
     };
 
     const cancelButton = (e) => {

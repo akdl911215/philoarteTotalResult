@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "icon": "icon-hourglass",
+    "title": "Satisfied Clients",
+    "value": 128,
+    "color": "default-color"
+  },
+  {
+    "id": 2,
+    "icon": "icon-lightbulb",
+    "title": "Projects a Year",
+    "value": 36,
+    "color": "red-color"
+  },
+  {
+    "id": 3,
+    "icon": "icon-wine",
+    "title": "Blog Posts",
+    "value": 662,
+    "color": "blue-color"
+  },
+  {
+    "id": 4,
+    "icon": "icon-hotairballoon",
+    "title": "Support Tickets",
+    "value": 334,
+    "color": "orange-color"
+  }
+]

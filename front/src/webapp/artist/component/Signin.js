@@ -16,7 +16,7 @@ const Signin = () => {
         e.preventDefault();
         e.stopPropagation();
         dispatch(signinPage(signin));
-        // history.push('/');
+        history.push('/');
     };
 
     const handleChange = (e) => {
@@ -67,11 +67,11 @@ const Signin = () => {
             </div>
 
             <div className="container SupporterSignup">
-                <label>
+                {/* <label>
                     <Link to="/artist/artist-signup">
                         <button className="buttonSelect1">서포터 회원가입</button>
                     </Link>
-                </label>
+                </label> */}
                 <label>
                     <Link to="/artist/artist-signup">
                         <button className="buttonSelect2">아티스트 회원가입</button>

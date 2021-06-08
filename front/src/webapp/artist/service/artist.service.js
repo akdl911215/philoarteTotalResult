@@ -1,3 +1,4 @@
+import { ContactsOutlined, ControlPointSharp } from '@material-ui/icons';
 import axios from 'axios';
 
 const SERVER = 'http://localhost:8080';
@@ -8,11 +9,15 @@ const list = (page) => {
     return axios.get(`${SERVER}/artists/list/pages?` + str);
 };
 
-const imgList = (imgList) => {
-    console.log('imgList :: ', imgList);
-    const str = 'page=' + (!imgList.page ? 1 : imgList.page) + '&type=' + (imgList.type ? imgList.type : '') + '&keyword=' + (imgList.keyword ? imgList.keyword : '') + '&pageFileDto=' + (imgList.pageFileDto ? imgList.pageFileDto : '');
-    return axios.get(`${SERVER}/artist_files/imgList/pages` + str);
-};
+// const imgList = (imgList) => {
+//     console.log('imgList :: ', imgList);
+//     // const str = 'page=' + (!imgList.page ? 1 : imgList.page) + '&type=' + (imgList.type ? imgList.type : '') + '&keyword=' + (imgList.keyword ? imgList.keyword : '') + '&pageFileDto=' + (imgList.pageFileDto ? imgList.pageFileDto : '');
+//     return axios.get(`${SERVER}/artist_files/imgList/pages`, {
+//         page: imgList.page,
+//         type: imgList.type,
+//         pageFileDto: imgList.pageFileDto,
+//     });
+// };
 // , {
 //     page: imgList.page,
 //     type: imgList.type,
@@ -48,8 +53,10 @@ const mypage = (artist) => {
         });
 };
 
-const deleteSelect = (deleteSelect) => {
-    return axios.put(`${SERVER}/artists/delete`, deleteSelect);
+const deleteSelect = (deleteArtistId) => {
+    console.log('deleteArtistId ::::::: ', deleteArtistId);
+
+    return axios.put(`${SERVER}/artists/delete/${deleteArtistId}`);
 };
 
 const totalSearchBar = (totalSearchBar) => {
@@ -60,4 +67,4 @@ const imgDel = (imgDel) => {
     return axios.put(`${SERVER}/page/imgDel`, imgDel);
 };
 
-export default { list, signin, signup, mypage, totalSearchBar, deleteSelect, imgDel, imgList };
+export default { list, signin, signup, mypage, totalSearchBar, deleteSelect, imgDel };

@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 @Transactional
 public interface FundingFileRepository extends JpaRepository<FundingFile, Long> {
+
     @EntityGraph(attributePaths = { "funding" }, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM FundingFile f WHERE f.funding.fundingId = :fundingId")
     List<FundingFile> getFileByFundingId(@Param("fundingId") Long id);

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "image": "icons/icon-rocket.png",
+    "title": "Design Ideas",
+    "text": "Design Concept is the big idea for how you'll approach the design, specifically the visual direction of your solution."
+  },
+  {
+    "id": 2,
+    "image": "icons/icon-planets.png",
+    "title": "Innovative Graphics",
+    "text": "Innovative Graphics provides you with a single source for all your printing needs. One source saves you time and ensures."
+  },
+  {
+    "id": 3,
+    "image": "icons/icon-laptop.png",
+    "title": "Responsive Design",
+    "text": "Responsive Design is an approach to web page creation that makes use of flexible layouts, flexible images."
+  },
+  {
+    "id": 4,
+    "image": "icons/icon-horse.png",
+    "title": "Perfect Support",
+    "text": "This support generally includes support for those services that require running without disruption and downtime."
+  },
+  {
+    "id": 5,
+    "image": "icons/icon-flask.png",
+    "title": "Strategy",
+    "text": "Design Concept is the big idea for how you'll approach the design, specifically the visual direction of your solution."
+  },
+  {
+    "id": 6,
+    "image": "icons/icon-diagram.png",
+    "title": "Planning",
+    "text": "Innovative Graphics provides you with a single source for all your printing needs. One source saves you time and ensures."
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "title": "Personal",
+    "tagline": "Basic and simple website",
+    "currency": "$",
+    "price": "10",
+    "featured": "false",
+    "features": [
+      "Mobile-Optimized Website",
+      "Powerful Website Metrics",
+      "Free Custom Domain",
+      "24/7 Customer Support",
+      "Fully Integrated E-Commerce",
+      "Sell Unlimited Products & Accept Donations"
+    ],
+    "btnText": "Try it now"
+  },
+  {
+    "id": 2,
+    "title": "Professional",
+    "tagline": "Basic and simple website",
+    "currency": "$",
+    "price": "16",
+    "featured": "true",
+    "features": [
+      "Mobile-Optimized Website",
+      "Powerful Website Metrics",
+      "Free Custom Domain",
+      "24/7 Customer Support",
+      "Fully Integrated E-Commerce",
+      "Sell Unlimited Products & Accept Donations"
+    ],
+    "btnText": "Try it now"
+  },
+  {
+    "id": 3,
+    "title": "Ultimate",
+    "tagline": "Basic and simple website",
+    "currency": "$",
+    "price": "29",
+    "featured": "false",
+    "features": [
+      "Mobile-Optimized Website",
+      "Powerful Website Metrics",
+      "Free Custom Domain",
+      "24/7 Customer Support",
+      "Fully Integrated E-Commerce",
+      "Sell Unlimited Products & Accept Donations"
+    ],
+    "btnText": "Try it now"
+  }
+]

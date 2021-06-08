@@ -8,6 +8,8 @@ const ArtistsDelete = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const artistsState = useSelector((state) => state.artists.artistsState);
+    const artistDeleteState = useSelector((state) => state.artists.artistsState.artistId);
+    console.log('artistDeleteState ::: ', artistDeleteState);
 
     useEffect(() => {
         dispatch(getLocalArtist());
@@ -16,10 +18,11 @@ const ArtistsDelete = () => {
     const deleteButton = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const obj = { artistId: artistsState.artistId };
-        console.log('SEND BEFORE', obj);
-        dispatch(deleteSelect(obj));
-        history.push('/');
+        // const obj = { artistId: artistsState.artistId };
+        // console.log('SEND BEFORE', obj);
+        dispatch(deleteSelect(artistDeleteState));
+        console.log('dispatch ::: ', dispatch);
+        // history.push('/');
     };
 
     return (

@@ -1,0 +1,8 @@
+[
+  { "id": 1, "image": "clients/logo-1-dark.png" },
+  { "id": 2, "image": "clients/logo-2-dark.png" },
+  { "id": 3, "image": "clients/logo-3-dark.png" },
+  { "id": 4, "image": "clients/logo-4-dark.png" },
+  { "id": 5, "image": "clients/logo-5-dark.png" },
+  { "id": 6, "image": "clients/logo-6-dark.png" }
+]

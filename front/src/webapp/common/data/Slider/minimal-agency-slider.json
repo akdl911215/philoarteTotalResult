@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "image": "slides/home-bg-15.jpg",
+    "title": "Digital Creations",
+    "text": "Your expectise of this is critical to your success",
+    "buttons": [
+      {
+        "id": 1,
+        "title": "Purchase Theme",
+        "path": "!#",
+        "type": "btn-light-outline btn-lg radius-0"
+      },
+      {
+        "id": 2,
+        "title": "Start a Project",
+        "path": "!#",
+        "type": "btn-color btn-lg radius-0"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "image": "slides/home-bg-16.jpg",
+    "title": "Innovate Transform",
+    "text": "Core to the success of what we achieve for our clients",
+    "buttons": [
+      {
+        "id": 1,
+        "title": "Purchase Theme",
+        "path": "!#",
+        "type": "btn-light-outline btn-lg radius-0"
+      },
+      {
+        "id": 2,
+        "title": "Start a Project",
+        "path": "!#",
+        "type": "btn-light-outline btn-lg radius-0"
+      }
+    ]
+  }
+]

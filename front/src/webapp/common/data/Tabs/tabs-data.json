@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Web Design",
+    "icon": "browser",
+    "path": "design",
+    "text": "Web design is the process of creating websites. It encompasses several different aspects, including webpage layout, content production, and graphic design. While the terms web design and web development are often used interchangeably, web design is technically a subset of the broader category of web development.",
+    "textBtn": "Buy Template",
+    "image": "iMac-screen.png"
+  },
+  {
+    "id": "2",
+    "title": "Development",
+    "icon": "global",
+    "path": "development",
+    "text": "Web development refers to building, creating, and an maintaining websites. It includes aspects such as web design, web publishing, web programming, and database management.While the terms \"web developer\" and \"web designer\" are often used synonymously, they do not mean the same thing.",
+    "textBtn": "Buy Template",
+    "image": "macbook-screen.png"
+  },
+  {
+    "id": "3",
+    "title": "Mobile Apps",
+    "icon": "mobile",
+    "path": "apps",
+    "text": "A mobile application, most commonly referred to as an app, is a type of application software designed to run on a mobile device, such as a smartphone or tablet computer. Apps are generally downloaded from application distribution platforms which are operated by the owner of the mobile operating system, such as the App Store (iOS) or Google Play Store.",
+    "textBtn": "Buy Template",
+    "image": "browser-screen.png"
+  },
+  {
+    "id": "4",
+    "title": "SEO Marketing",
+    "icon": "presentation",
+    "path": "seo",
+    "text": "Search engine optimization is the process of increasing the quality and quantity of website traffic by increasing the visibility of a website or a web page to users of a web search engine.SEO refers to the improvement of unpaid results, and excludes direct traffic/visitors and the purchase of paid placement.",
+    "textBtn": "Buy Template",
+    "image": "ipad-screen.png"
+  }
+]

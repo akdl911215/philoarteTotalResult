@@ -1,5 +1,7 @@
 package api.philoarte.leejunghyunshop.artist.service;
 
+import api.philoarte.leejunghyunshop.art.repository.ArtFileRepository;
+import api.philoarte.leejunghyunshop.art.repository.ArtRepository;
 import api.philoarte.leejunghyunshop.artist.domain.*;
 import api.philoarte.leejunghyunshop.artist.domain.dto.ArtistDto;
 import api.philoarte.leejunghyunshop.artist.domain.role.Role;
@@ -8,6 +10,10 @@ import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageRequestDto;
 import api.philoarte.leejunghyunshop.artist.repository.ArtistRepository;
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageResultDto;
 import api.philoarte.leejunghyunshop.common.service.AbstractService;
+import api.philoarte.leejunghyunshop.funding.repository.FundingFileRepository;
+import api.philoarte.leejunghyunshop.funding.repository.FundingRepository;
+import api.philoarte.leejunghyunshop.resume.repository.ResumeFileRepository;
+import api.philoarte.leejunghyunshop.resume.repository.ResumeRepository;
 import api.philoarte.leejunghyunshop.security.domain.SecurityProvider;
 import api.philoarte.leejunghyunshop.security.exception.SecurityRuntimeException;
 import com.querydsl.core.BooleanBuilder;
@@ -40,14 +46,16 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
     private final AuthenticationManager manager;
     private final ArtistFileRepository aritstFileRepository;
 
-
     @Transactional
     @Override // jpa save 사용시 insert가 아니고 update 뜨는 이유
     public Map<String, String> signup(ArtistDto artistDto) {
         log.info("Signup ServiceImpl 시작" );
+        log.info("artistDto :::: " + artistDto);
         if(!repository.existsByUsername(artistDto.getUsername())){
             Map<String, Object> entityMap = dtoToEntity(artistDto);
+            log.info("entityMap :::: " + entityMap);
 
+            // if 문으로 사진없을시 못들어오게하기
             Artist entity = (Artist) entityMap.get("artist");
             repository.saveAndFlush(entity); // save 안될시 saveAndFlush 변경하자
 
@@ -84,6 +92,21 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         }
     }
 
+
+    @Override
+    public void artistDelete(Long artistId) {
+        repository.artistDelete(artistId);
+    }
+
+//    @Override
+//    public Long ArtistWithrawal(Long artistId) {
+//        Long artistWithrawal = artistId.;
+//                repository.findAllById();
+//
+//        return 0L;
+//    }
+
+
     @Override
     public ArtistDto signin(ArtistDto artistDto) {
         log.info("Signin 시작");
@@ -103,14 +126,14 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
             if (fileListResult.isPresent()) {
                 fileListResult.get().getArtistFileId();
 
-                log.warn("3111111111111111");
+                log.info("제대로 지나갑니까?");
 
                 String uuid = fileListResult.get().getUuid();
                 String imgName = fileListResult.get().getImgName();
                 entityDto.setUuid(uuid);
                 entityDto.setImgName(imgName);
             } else {
-
+                log.info("여기가 출력되면 이미지가 없어서 기본이미지 저장");
                 entityDto.setUuid("fd05e3c1-0eb2-4062-88be-8be96f833ab9");
                 entityDto.setImgName("aaa.jpg");
 
@@ -126,6 +149,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
 //            ) ?
 //            provider.createToken(entity.getUsername(), repository.findByUsername(entity.getUsername()).get().getRoles())
 //            : "WRONG_PASSWORD");
+            log.info("리턴 직전");
             return entityDto;
         } catch (Exception e){
             throw new SecurityRuntimeException("Invalid Artist-Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -277,5 +301,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         log.info("return result :::::: " + result);
         return new PageResultDto<>(result, fn);
     }
+
+
 }
 

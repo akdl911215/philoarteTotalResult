@@ -99,6 +99,7 @@ public class ArtistFileServiceImpl implements ArtistFilerService {
         aritstFileRepository.artistFileDelete(artistFileId);
     }
 
+
     private BooleanBuilder getSearch(PageRequestDto requestDto) {
         String type = requestDto.getType();
         BooleanBuilder booleanBuilder = new BooleanBuilder();
@@ -148,10 +149,6 @@ public class ArtistFileServiceImpl implements ArtistFilerService {
         log.info("드디어 들어가나요?");
         log.info("requestDto :::::::: " + requestDto);
 
-//        ArtistFileDto artistFileDto =
-
-
-
         BooleanBuilder booleanBuilder = getSearch(requestDto); // 검색 조건 처리
         log.info("booleanBuilder ::: " + booleanBuilder);
         Page<Artist> result = artistRepository.findAll(booleanBuilder, pageable); //Querydsl 사용
@@ -170,10 +167,5 @@ public class ArtistFileServiceImpl implements ArtistFilerService {
         return new PageResultDto<>(result, fn);
     }
 
-//    public Long getUuidImgName (Long artistFileId) {
-//        // 전체값을 리덕스로 던져준 상태
-//        // uuid, img네임 리턴받기
-//
-//        return 0L;
-//    }
+
 }

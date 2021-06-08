@@ -6,15 +6,19 @@ import api.philoarte.leejunghyunshop.artist.domain.dto.ArtistDto;
 import api.philoarte.leejunghyunshop.artist.domain.dto.ArtistFileDto;
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageRequestDto;
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageResultDto;
+import org.springframework.data.repository.query.Param;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
 public interface ArtistService {
 
+    void artistDelete(Long artistId);
+//    Long ArtistWithrawal(Long artistId);
     ArtistDto signin(ArtistDto artistDto);
     List<Artist> getAllData();
     List<Artist> findAll();

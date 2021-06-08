@@ -11,6 +11,7 @@ import { Grid } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 const FundingList = () => {
+
     const pageResult = useSelector((state) => state.fundings.pageResult);
 
     const page = pageResult.page;

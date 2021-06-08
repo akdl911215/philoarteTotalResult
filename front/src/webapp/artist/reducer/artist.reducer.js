@@ -8,12 +8,12 @@ const getArtistServerPage = async (page) => {
     return response.data;
 };
 
-const getArtistServerFilePage = async (filePage) => {
-    console.log('getARtistServerPage :: ' + filePage);
-    const response = await ArtistService.imgList(filePage);
-    console.log('response ::::::::: ', response.data);
-    return response.data;
-};
+// const getArtistServerFilePage = async (filePage) => {
+//     console.log('getARtistServerPage :: ' + filePage);
+//     const response = await ArtistService.imgList(filePage);
+//     console.log('response ::::::::: ', response.data);
+//     return response.data;
+// };
 
 const getArtistSigninPage = async (signin) => {
     console.log('getArtistSigninPage :: ' + signin);
@@ -35,14 +35,14 @@ const getArtistMypagePage = async (mypage) => {
     return response.data;
 };
 
-const getArtistDeleteSelect = async (deleteSelect) => {
-    console.log('getArtistDeleteSelect :: ' + deleteSelect);
-    const response = await ArtistService.deleteSelect(deleteSelect);
+const getArtistDeleteSelect = async (deleteArtistId) => {
+    console.log('getArtistDeleteSelect :: ' + deleteArtistId);
+    const response = await ArtistService.deleteSelect(deleteArtistId);
     return response.data;
 };
 
 export const fetchPage = createAsyncThunk('artists/list', getArtistServerPage);
-export const fetchFilePage = createAsyncThunk('artists/fileList', getArtistServerFilePage);
+// export const fetchFilePage = createAsyncThunk('artists/fileList', getArtistServerFilePage);
 export const signinPage = createAsyncThunk('artists/signin', getArtistSigninPage);
 export const signupPage = createAsyncThunk('artists/signup', getArtistSignupPage);
 export const mypagePage = createAsyncThunk('artists/mypage', getArtistMypagePage);
@@ -102,26 +102,26 @@ const artistSlice = createSlice({
             state.keyword = action.payload.keyword;
         },
 
-        getArtistImgList: (state, action) => {
-            const artistsImge = JSON.stringify(window.localStorage.getItem('artistsImge'));
-            state.artistsState.dtoList = artistsImge;
-            console.log('============Local Image===========');
-            console.log(state.artistsState.dtoList);
+        // getArtistImgList: (state, action) => {
+        //     const artistsImge = JSON.stringify(window.localStorage.getItem('artistsImge'));
+        //     state.artistsState.dtoList = artistsImge;
+        //     console.log('============Local Image===========');
+        //     console.log(state.artistsState.dtoList);
 
-            console.log('=======================');
-        },
+        //     console.log('=======================');
+        // },
     },
     extraReducers: {
         [fetchPage.fulfilled]: (state, { meta, payload }) => {
             console.log('payload fetchPage :::::::', payload);
             state.pageResult = payload;
         },
-        [fetchFilePage.fulfilled]: (state, { meta, payload }) => {
-            console.log('payload fetchPage :::::::', payload);
-            state.pageFileDto = payload;
-            console.log('state.pageFileDto ::::::: ', state.pageFileDto);
-            window.localStorage.setItem('artistsImge', JSON.stringify(payload));
-        },
+        // [fetchFilePage.fulfilled]: (state, { meta, payload }) => {
+        //     console.log('payload fetchPage :::::::', payload);
+        //     state.pageFileDto = payload;
+        //     console.log('state.pageFileDto ::::::: ', state.pageFileDto);
+        //     window.localStorage.setItem('artistsImge', JSON.stringify(payload));
+        // },
         [signinPage.fulfilled]: (state, { meta, payload }) => {
             console.log('payload ::::::::::: ', payload);
             state.artistsState = payload;

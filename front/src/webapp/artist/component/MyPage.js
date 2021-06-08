@@ -17,35 +17,14 @@ const MyPage = () => {
     console.log('artistsFiles :::: ', artistsFiles);
     console.log('artistsFilesimgName :::: ', artistsFilesimgName);
     console.log('artistsFilesUuid :::: ', artistsFilesUuid);
-
-    // const uploadImgName = () => {
-    //     const result = { resultImg: `http://localhost:8080/artist_files/display?imgName=4624db26-c931-42e7-a119-b65f87dd5d52s_main2.jpg` };
-    // };
-
     console.log('======================================');
-    // console.log('mypage.uuid ::: ', mypage.uuid);
     console.log('artistsState.uuid ::: ', artistsState.uuid);
     console.log('======================================');
 
-    const [imgBase64, setImgBase64] = useState('');
+
     const [files, setFiles] = useState(null);
     console.log('files ::::::: ', files);
 
-    const handleUploadFile = (e) => {
-        let reader = new FileReader();
-
-        reader.onloadend = () => {
-            // 읽기가 완료되면 코드 실행
-            const base64 = reader.result;
-            if (base64) {
-                setImgBase64(base64.toString()); // 파일 base64 상태 업데이트
-            }
-        };
-        if (e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0]); // 파일을 읽어 버퍼에 저장
-            setFiles(e.target.files[0]); // 파일 상태 업데이트
-        }
-    };
 
     const artistFiles = artistsState.artistFileDtoList;
     console.log('artistFiles ::::::::: ', artistFiles);
@@ -67,72 +46,59 @@ const MyPage = () => {
         uuid: artistsState.uuid,
         imgName: artistsState.imgName,
     });
-    console.log('mypage ::::::::::: ', mypage);
-    console.log('artistsState.uuide ::::::::::: ', artistsState.uuid);
-    console.log('mypage.uuid ::::::::::: ', mypage.uuid);
-    console.log('artistsState.imgName ::::::::::: ', artistsState.imgName);
-    console.log('mypage.imgName ::::::::::: ', mypage.imgName);
 
-    useEffect(() => {
-        console.log('getLocalArtist :::: ', getLocalArtist);
-        dispatch(getLocalArtist());
-    }, []);
 
-    const goMypage = async (e) => {
-        let mypageResult = window.confirm('Mypage를 수정하시겠습니까?');
+    const handleSubmit = async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const obj = {
-            uuid: artistsState.uuid,
-            imgName: artistsState.imgName,
-            files: artistsState.files,
-            token: artistsState.token,
-            files: artistsState.files,
-            artistId: artistsState.artistId,
-            username: artistsState.usename,
-            password: mypage.password,
-            name: artistsState.name,
-            phoneNumber: mypage.phoneNumber,
-            email: mypage.email,
-            address: mypage.address,
-            school: mypage.school,
-            department: mypage.department,
-            uuid: artistsState.uuid,
-            imgName: artistsState.artistsState,
-        };
-        console.log('obj ::::::::: ', obj);
 
+        console.log('files :::: ', files);
+        console.log('mypage :::: ', mypage);
+
+        // formData : file을 업로드
         const formData = new FormData();
+        console.log('formData) ::: ', formData);
+
         for (let i = 0; i < files.length; i++) {
             console.log('for files :::::::::', files);
             formData.append('files[' + i + ']', files[i]);
         }
-        formData.append('username', artistsState.username);
-        formData.append('artistId', artistsState.artistId);
+
+        formData.append('username', mypage.username);
         formData.append('password', mypage.password);
-        formData.append('name', artistsState.name);
+        formData.append('name', mypage.name);
         formData.append('email', mypage.email);
         formData.append('phoneNumber', mypage.phoneNumber);
         formData.append('address', mypage.address);
         formData.append('school', mypage.school);
         formData.append('department', mypage.department);
-        formData.append('uuid', artistsState.uuid);
-        formData.append('imgName', artistsState.imgName);
         console.log('formData : ', formData);
+        console.log('==============================');
+        console.log(mypage.username);
+        console.log(mypage.password);
+        console.log(mypage.name);
+        console.log(mypage.email);
+        console.log(mypage.phoneNumber);
+        console.log(mypage.address);
+        console.log(mypage.school);
+        console.log(mypage.department);
+        console.log('==============================');
 
-        if (mypageResult) {
-            alert('수정 완료');
-            await dispatch(mypagePage(obj));
-        }
+        await dispatch(signupPage(formData));
+        console.log('dispatch formData : ', formData);
 
-        // history.push('/');
+        // if (mypageResult) {
+        //     alert('수정 완료');
+        //     await dispatch(mypagePage(obj));
+        // }
+
+        // history.push('/artists/artists_signin');
     };
 
-    const goHome = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        history.push('/');
-    };
+    useEffect(() => {
+        console.log('getLocalArtist :::: ', getLocalArtist);
+        dispatch(getLocalArtist());
+    }, []);
 
     const handleChange = useCallback(
         (e) => {
@@ -146,13 +112,19 @@ const MyPage = () => {
         [mypage]
     );
 
-    const handleChangeFile = (e) => {
+    const clickUpdate = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         const fileObj = e.target;
         console.dir(fileObj.files);
         setFiles(fileObj.files);
     };
 
-    const removeImgBtn = (e) => {};
+    const goHome = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        history.push('/');
+    };
 
     return (
         <>
@@ -165,11 +137,13 @@ const MyPage = () => {
                         <label htmlFor="artistFile">
                             <b>대표이미지</b>
                         </label>
+
                         <td>
                             {/* <div className="display-flex" style={{ marginBottom: '50px' }}></div> */}
                             <div>
                                 <img src={'http://localhost:8080/artist_files/display?imgName=' + `${artistsFilesUuid}` + 's_' + `${artistsFilesimgName}`} />
                                 <br />
+                                <input type="file" name="file" id="reviewFileDtoList" className="md-textarea" rows="7" multiple={true} onChange={(e) => clickUpdate(e)}></input>
                                 <br />
                                 <br />
 
@@ -227,7 +201,7 @@ const MyPage = () => {
                             type="submit"
                             className="updatebtn"
                             onClick={(e) => {
-                                goMypage(e);
+                                clickUpdate(e);
                             }}
                         >
                             정보 수정

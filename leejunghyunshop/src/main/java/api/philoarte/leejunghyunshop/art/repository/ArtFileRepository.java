@@ -8,10 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
 public interface ArtFileRepository extends JpaRepository<ArtFile, Long> {
+
 
     @EntityGraph(attributePaths = { "art" }, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT f FROM ArtFile f WHERE f.art.artId = :artId")
@@ -23,5 +25,7 @@ public interface ArtFileRepository extends JpaRepository<ArtFile, Long> {
 
     @Query("SELECT f.fileId FROM ArtFile f WHERE f.uuid = :uuid")
     Long findByUuid(@Param("uuid") String uuid);
+
+
 
 }
