@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ReviewFileService {
-    ArrayList<ReviewFileDto> saveFile(List<MultipartFile> uploadFile);
+    ArrayList<ReviewFileDto> saveFile(List<MultipartFile> uploadFiles);
     void reviewFileDelete(Long reviewFileId);
 
     default ReviewFile dtoToEntity(ReviewFileDto reviewFileDto){

@@ -19,9 +19,7 @@ public class Review extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long reviewId;
-
     private String title;
-
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,6 +29,7 @@ public class Review extends BaseEntity {
     public void changeTitle(String title){
         this.title =title;
     }
+
     public void changeContent(String content){
         this.content=content;
     }

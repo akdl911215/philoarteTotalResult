@@ -34,7 +34,7 @@ public class ArtistController {
     private final ArtistServiceImpl service;
     private final ArtistFileServiceImpl artistFileService;
 
-    @Value("${leejunghyunshop.philoarte.upload.path}")
+    @Value("${shop.upload.path}")
     private String uploadPath;
 
     @GetMapping("/list/pages")

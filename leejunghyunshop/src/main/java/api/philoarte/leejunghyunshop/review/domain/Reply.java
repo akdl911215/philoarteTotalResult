@@ -33,5 +33,4 @@ public class Reply extends BaseEntity {
     @JoinColumn(name = "review_id")
     private Review review;
 
-
 }

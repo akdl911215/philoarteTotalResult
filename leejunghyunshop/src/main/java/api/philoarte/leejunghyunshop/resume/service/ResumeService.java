@@ -33,6 +33,8 @@ public interface ResumeService {
 
     List<Object[]> countByArtistId(Long artistId);
 
+    public ResumeDto getById(Long resumeId);
+
     default ResumeFile dtoToEntityResumeFile(ResumeFileDto dto) {
 
         return ResumeFile.builder().resumeFileId(dto.getResumeFileId()).fileTitle(dto.getFileTitle())
@@ -61,5 +63,4 @@ public interface ResumeService {
 
         return (en -> resumeEntityToDto(en));
     }
-
 }

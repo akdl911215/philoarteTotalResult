@@ -43,7 +43,7 @@ public class ArtistFileServiceImpl implements ArtistFilerService {
     private final ArtistFileRepository aritstFileRepository;
     private final ArtistRepository artistRepository;
 
-    @Value("${leejunghyunshop.philoarte.upload.path}")
+    @Value("${shop.upload.path}")
     private String uploadPath;
 
     @Transactional

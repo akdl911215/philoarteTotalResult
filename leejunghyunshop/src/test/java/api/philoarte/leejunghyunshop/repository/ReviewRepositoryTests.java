@@ -133,16 +133,16 @@ public class ReviewRepositoryTests {
         });
     }
 
-    @Test
-    public void testGetReviewWithReply() {
-        List<Object[]> result = reviewRepository.getReviewWithReply(417L);
-
-        System.out.println(result);
-
-        for (Object[] arr : result) {
-            System.out.println(Arrays.toString(arr));
-        }
-    }
+//    @Test
+//    public void testGetReviewWithReply() {
+//        List<Object[]> result = reviewRepository.getReviewWithReply(417L);
+//
+//        System.out.println(result);
+//
+//        for (Object[] arr : result) {
+//            System.out.println(Arrays.toString(arr));
+//        }
+//    }
 
 
 

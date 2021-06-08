@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public interface ReviewRepository extends JpaRepository<Review, Long>, SearchReviewRepository{
+public interface ReviewRepository extends JpaRepository<Review, Long>, SearchReviewRepository {
 
     @Transactional
     @Modifying
@@ -24,27 +24,29 @@ public interface ReviewRepository extends JpaRepository<Review, Long>, SearchRev
     @Query("DELETE FROM Review a where a.reviewId = :reviewId")
     void reviewDelete(@Param("reviewId") Long reviewId);
 
-
     @Query("SELECT re, w FROM Review re LEFT JOIN re.artist w where re.reviewId =:reviewId")
     Object getRevieWithWriter(@Param("reviewId") Long reviewId);
 
-    // 특정 리뷰와 해당 리뷰에 속한 댓글 조회
+    /* // 특정 리뷰와 해당 리뷰에 속한 댓글 조회 */
+
     @Query("SELECT re, w, count(rp), rf " +
             " FROM Review re LEFT JOIN re.artist w" +
             " LEFT OUTER JOIN Reply rp ON rp.review = re " +
             " LEFT OUTER JOIN ReviewFile rf on rf.review =re "
             + " where re.reviewId = :reviewId group by rf ")
-    List<Object[]> getReviewWithReply(@Param("reviewId") Long reviewId);
+    List<Object[]> getRevieWithReply(@Param("reviewId") Long reviewId);
 
 
-    // 리뷰 조회 쿼리
+    /*리뷰 조회 쿼리 */
+
     @Query(" SELECT re, w, count(rp) " +
             " FROM Review re LEFT JOIN re.artist w " +
             " LEFT OUTER JOIN Reply rp ON rp.review =re" +
             " where re.reviewId = :reviewId")
     Object getReviewByReviewId(@Param("reviewId") Long reviewId);
 
-    // w.artistId(화면 목록)
+    /*    //w.artistId(화면 목록)*/
+
     @Query(value = " SELECT re, w, count(distinct rp), rf " +
             " FROM Review re " +
             " LEFT JOIN re.artist w "

@@ -27,35 +27,31 @@ public class ReviewFileController {
 
     private final ReviewFileServiceImpl service;
 
-    @Value("${philo.arte.upload.path}")
-    private String uploadPath;
-
     @PostMapping("/upload_file")
     public ResponseEntity<List<ReviewFileDto>> uploadFile(List<MultipartFile> files) {
         for (MultipartFile file : files) {
             System.out.println("file" + file);
-
-            if (!file.getContentType().startsWith("image")){
-
+            if (!file.getContentType().startsWith("image")) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             }
         }
         return ResponseEntity.ok(service.saveFile(files));
     }
 
+    @Value("${shop.upload.path}")
+    private String uploadPath;
+
     @GetMapping("/display")
-    public ResponseEntity<byte[]> getFile(String imgName){
+    public ResponseEntity<byte[]> getFile(String imgName) {
         ResponseEntity<byte[]> result = null;
-        try{
+        try {
             String srcFileName = URLDecoder.decode(imgName, "UTF-8");
-            log.info("imgName : ", srcFileName);
-
+            log.info("imgName :" + srcFileName);
             File file = new File(uploadPath + File.separator + srcFileName);
-            log.info("file : ", file);
-
-            HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.add("Content-Type", Files.probeContentType(file.toPath()));
-            result = ResponseEntity.ok(FileCopyUtils.copyToByteArray(file));
+            log.info("file : " + file);
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Type", Files.probeContentType(file.toPath()));
+            result = ResponseEntity.ok().headers(headers).body(FileCopyUtils.copyToByteArray(file));
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -63,16 +59,16 @@ public class ReviewFileController {
         return result;
     }
 
-    @PutMapping("/upload_file/{reviewFileId}")
+    @PutMapping("/update_file/{reviewFileId")
     public ResponseEntity<ArrayList<ReviewFileDto>> updateFile(List<MultipartFile> files) {
-
         return ResponseEntity.ok(service.saveFile(files));
     }
 
     @DeleteMapping("/delete_file/{reviewFileId}")
-    public ResponseEntity<String> deleteFile(@PathVariable("reivewFileId") Long reviewFileId){
+    public ResponseEntity<String> deleteFile(@PathVariable("reviewFileId") Long reviewFileId) {
+
         service.reviewFileDelete(reviewFileId);
 
-        return ResponseEntity.ok("Delete Success");
+        return ResponseEntity.ok("delete success");
     }
 }

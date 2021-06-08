@@ -16,20 +16,9 @@ spring:
     hibernate:
       ddl-auto: update
 
-leejunghyunshop:
-  philoarte:
-    upload:
-      path: C:\update\artists
-
-philo:
-  arte:
-    upload:
-      path: c:\update
-
 shop:
-  legossol:
-    upload:
-      path: C:\update\funding
+  upload:
+    path: C:\update\artists
 
 security:
   jwt:

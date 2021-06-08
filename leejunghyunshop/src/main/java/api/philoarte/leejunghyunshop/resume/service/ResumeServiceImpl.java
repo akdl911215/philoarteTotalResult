@@ -1,14 +1,24 @@
 package api.philoarte.leejunghyunshop.resume.service;
 
-import api.philoarte.leejunghyunshop.category.repository.ResumeRepository;
+
+import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageResultDto;
 import api.philoarte.leejunghyunshop.common.service.AbstractService;
+import api.philoarte.leejunghyunshop.resume.domain.Resume;
 import api.philoarte.leejunghyunshop.resume.domain.ResumeDto;
+import api.philoarte.leejunghyunshop.resume.domain.ResumeFile;
+import api.philoarte.leejunghyunshop.resume.domain.ResumeFileDto;
+import api.philoarte.leejunghyunshop.resume.repository.ResumeFileRepository;
 import api.philoarte.leejunghyunshop.resume.repository.ResumeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -60,10 +70,10 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
     }
 
     @Override
-    public ResumeDto findById(Long resumeId) {
+    public Optional<ResumeDto> findById(Long resumeId) {
         Resume resume = repo.findById(resumeId).orElseThrow(IllegalArgumentException::new);
 
-        return resumeEntityToDto(resume);
+        return null;
     }
 
     @Override
@@ -74,6 +84,8 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
         repo.delete(resume);
         return (repo.findById(resume.getResumeId()).isPresent()) ? "Delete Failed" : "Delete Success";
     }
+
+
 
     @Override
     public PageResultDto<ResumeDto, Resume> getAllDataPaging(int page) {
@@ -125,6 +137,13 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
     }
 
     @Override
+    public ResumeDto getById(Long resumeId) {
+        Resume resume = repo.findById(resumeId).orElseThrow(IllegalArgumentException::new);
+
+        return resumeEntityToDto(resume);
+    }
+
+    @Override
     public Optional<ResumeDto> getOne(Long id) {
         // TODO Auto-generated method stub
         return null;
@@ -136,17 +155,16 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
 
     }
 
+
+
+
+
     @Override
-    public Boolean existsById(Long id) {
-        // TODO Auto-generated method stub
+    public Boolean existsById(long id) {
         return null;
     }
 
-    @Override
-    public void deleteById(Long id) {
-        // TODO Auto-generated method stub
 
-    }
 
     @Override
     public String save(ResumeDto t) {

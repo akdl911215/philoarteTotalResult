@@ -18,30 +18,37 @@ public class ReplyServiceImpl implements ReplyService {
 
     private final ReplyRepository repository;
 
+
     @Transactional
     @Override
     public Long save(ReplyDto replyDto) {
-        Reply reply = dtoToEntity(replyDto);
-        repository.save(reply);
+        Reply replySave = dtoToEntity(replyDto);
+
+        repository.save(replySave);
 
         return replyDto.getRno();
     }
 
     @Override
-    public void remove(Long rno) {
-        repository.deleteById(rno);
+    public List<ReplyDto> getList(Long reviewId) {
+        List<Reply> result = repository.getRepliesByReviewOrderByRegDate(Review.builder().reviewId(reviewId).build());
+        return result.stream().map(reply -> entityToDto(reply)).collect(Collectors.toList());
     }
 
     @Override
     public void modify(ReplyDto replyDto) {
         Reply reply = dtoToEntity(replyDto);
         repository.save(reply);
+//        repository.deleteById(replyDto.getRno());
+////        repository.findById(replyDto.getRno());
+//        repository.save(reply);
+//        repository.findById(replyDto.getRno());
     }
 
-    @Override
-    public List<ReplyDto> getList(Long reviewId) {
-        List<Reply> result = repository.getRepliesByReviewOrderByRegDateDesc(Review.builder().reviewId(reviewId).build());
 
-        return result.stream().map(reply -> entityToDto(reply)).collect(Collectors.toList());
+    @Override
+    public void remove(Long rno) {
+
+        repository.deleteById(rno);
     }
 }

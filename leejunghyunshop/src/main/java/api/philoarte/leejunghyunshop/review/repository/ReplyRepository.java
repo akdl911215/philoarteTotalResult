@@ -10,17 +10,16 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
-    @Query("SELECT a from Reply a ORDER BY a.rno DESC")
+    @Query("select a from Reply a order by a.rno desc")
     List<Reply> replyFindAll();
 
     @Modifying
-    @Query("UPDATE Reply a SET a.text = :text WHERE a.rno = :rno")
+    @Query("Update Reply a set a.text = :text where a.rno = :rno")
     int replyUpdate(@Param("rno") Long rno, @Param("text") String text);
 
-    // 리뷰 삭제시 댓글 삭제
     @Modifying
-    @Query("DELETE FROM Reply rp WHERE rp.review.reviewId = :reviewId")
+    @Query("DELETE FROM Reply rp where rp.review.reviewId = :reviewId ")
     void replyDelete(@Param("reviewId") Long reviewId);
 
-    List<Reply> getRepliesByReviewOrderByRegDateDesc(Review review);
+    List<Reply> getRepliesByReviewOrderByRegDate(Review review);
 }

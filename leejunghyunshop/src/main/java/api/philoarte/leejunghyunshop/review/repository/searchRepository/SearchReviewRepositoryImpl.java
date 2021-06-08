@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,6 +47,7 @@ public class SearchReviewRepositoryImpl extends QuerydslRepositorySupport implem
         jpqlQuery.leftJoin(reviewFile).on(reviewFile.review.eq(review));
 
         JPQLQuery<Tuple> tuple = jpqlQuery.select(review, artist, reply.count(), reviewFile);
+
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         BooleanExpression expression = review.reviewId.gt(0L);
 
@@ -53,22 +55,25 @@ public class SearchReviewRepositoryImpl extends QuerydslRepositorySupport implem
 
         if (type != null) {
             String[] typeArr = type.split("");
-            BooleanBuilder typeBooleanBuilder = new BooleanBuilder();
+
+            log.info(Arrays.toString(typeArr));
+
+            BooleanBuilder conditionBuilder = new BooleanBuilder();
 
             for (String t : typeArr) {
                 switch (t) {
                     case "t":
-                        typeBooleanBuilder.or(review.title.contains(keyword));
+                        conditionBuilder.or(review.title.contains(keyword));
                         break;
                     case "w":
-                        typeBooleanBuilder.or(artist.name.contains(keyword));
+                        conditionBuilder.or(artist.name.contains(keyword));
                         break;
                     case "c":
-                        typeBooleanBuilder.or(review.content.contains(keyword));
+                        conditionBuilder.or(review.content.contains(keyword));
                         break;
                 }
             }
-            booleanBuilder.and(typeBooleanBuilder);
+            booleanBuilder.and(conditionBuilder);
         }
         tuple.where(booleanBuilder);
 
