@@ -85,20 +85,13 @@ const Signup = () => {
         await dispatch(signupPage(formData));
         console.log('dispatch formData : ', formData);
 
-        // history.push('/artists/artists_signin');
+        history.push('/artists/artists_signin');
     };
 
     const cancelButton = (e) => {
         e.preventDefault();
         window.location = 'http://localhost:3000/artist/artist-signin';
     };
-
-    // const register = async (e) => {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-
-    //     // history.push('/');
-    // };
 
     return (
         <>

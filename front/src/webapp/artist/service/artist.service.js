@@ -32,7 +32,7 @@ const signin = (signin) => {
 };
 
 const signup = (param) => {
-    alert('안올껄?');
+    alert('회원가입을 축하합니다! 축!');
     console.log('sevice param : ', param);
     return axios.post(`${SERVER}/artists/signup`, param, {
         headers: {

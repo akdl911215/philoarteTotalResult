@@ -53,32 +53,32 @@ public class ArtistFileController {
         return ResponseEntity.ok(service.saveFile(files));
     }
 
-//    @GetMapping("/display")
-//    public ResponseEntity<byte[]> getFile(String imgName) {
-//        ResponseEntity<byte[]> result = null;
-//        log.info("display 시작");
-//
-//        try {
-//            String srcFileName = URLDecoder.decode(imgName, "UTF-8");
-//            log.info("imgName : ", srcFileName);
-//
-//            File file = new File(uploadPath + File.separator + srcFileName);
-//            log.info("file : ", file);
-//
-//            HttpHeaders header = new HttpHeaders();
-//
-//            // MIME타입 처리
-//            header.add("Content-Type", Files.probeContentType(file.toPath()));
-//            // 파일 데이터 처리
-//            result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
-//
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        log.info("display 끝");
-//        return result;
-//    }
+    @GetMapping("/display")
+    public ResponseEntity<byte[]> getFile(String imgName) {
+        ResponseEntity<byte[]> result = null;
+        log.info("display 시작");
+
+        try {
+            String srcFileName = URLDecoder.decode(imgName, "UTF-8");
+            log.info("imgName : ", srcFileName);
+
+            File file = new File(uploadPath + File.separator + srcFileName);
+            log.info("file : ", file);
+
+            HttpHeaders header = new HttpHeaders();
+
+            // MIME타입 처리
+            header.add("Content-Type", Files.probeContentType(file.toPath()));
+            // 파일 데이터 처리
+            result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        log.info("display 끝");
+        return result;
+    }
 
     @PutMapping("/update_file/{reviewFileId}")
     public ResponseEntity<ArrayList<ArtistFileDto>> updateFile(List<MultipartFile> files) {

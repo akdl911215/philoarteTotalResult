@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://112.169.196.99/arte?zeroDateTimeBehavior=convertToNull
-    username: arte
-    password: Arte1234
+    url: jdbc:mysql://localhost:3306/root?allowPublicKeyRetrieval=true
+    username: root
+    password: 456123
   servlet:
     multipart:
       max-file-size: 50MB

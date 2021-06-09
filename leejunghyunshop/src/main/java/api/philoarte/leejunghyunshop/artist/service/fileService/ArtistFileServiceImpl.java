@@ -74,7 +74,7 @@ public class ArtistFileServiceImpl implements ArtistFilerService {
                 Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
 
                 Thumbnails.of(new File(saveName)).scale(1)
-                        .watermark(Positions.BOTTOM_CENTER, ImageIO.read(new File(uploadPath + File.separator + "warterMark.png")), 0.5f)
+                        .watermark(Positions.BOTTOM_CENTER, ImageIO.read(new File(uploadPath + File.separator + "warterMark.png")), 1f)
                         .toFile(new File(uploadPath + File.separator + "w+" + uuid + "_" + ofName));
 
                 ArtistFileDto artistFileDto = ArtistFileDto.builder()
@@ -155,15 +155,8 @@ public class ArtistFileServiceImpl implements ArtistFilerService {
         log.info("result ::: " + result);
         Function<Artist, ArtistDto> fn = (entity -> entityDto(entity));
         log.info("fn :::: " + fn);
-
-
-//        Optional<ArtistDto> artistDto = aritstFileRepository.findById(artistFileIdSetting);
-//        Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistFileIdSetting);
-//        fileListResult.get().getArtistFileId();
-//        String uuid = fileListResult.get().getUuid();
-//        String imgName = fileListResult.get().getImgName();
-
         log.info("return result :::::: " + result);
+
         return new PageResultDto<>(result, fn);
     }
 

@@ -47,7 +47,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
     private final ArtistFileRepository aritstFileRepository;
 
     @Transactional
-    @Override // jpa save 사용시 insert가 아니고 update 뜨는 이유
+    @Override
     public Map<String, String> signup(ArtistDto artistDto) {
         log.info("Signup ServiceImpl 시작" );
         log.info("artistDto :::: " + artistDto);

@@ -170,6 +170,8 @@ const MyPage = () => {
                             <div>
                                 <img src={'http://localhost:8080/artist_files/display?imgName=' + `${artistsFilesUuid}` + 's_' + `${artistsFilesimgName}`} />
                                 <br />
+                                <br />
+                                <br />
 
                                 {/* <button>upload</button>
                                 <button onClick={(e) => removeImgBtn(e)}>remove</button> */}
