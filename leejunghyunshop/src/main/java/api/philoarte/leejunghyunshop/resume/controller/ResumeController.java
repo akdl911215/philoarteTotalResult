@@ -20,6 +20,7 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ResumeController {
 
+
     private final ResumeServiceImpl service;
     private final ResumeFileServiceImpl fileService;
 
@@ -27,6 +28,7 @@ public class ResumeController {
     @ApiOperation(value = "${ResumeController.register}")
     public ResponseEntity<String> save(@RequestBody ResumeDto resume) {
         System.out.println("---------resume: " + resume.toString());
+        System.out.println("======================");
         return ResponseEntity.ok(service.resumeSaveWithFile(resume));
     }
 

@@ -80,7 +80,7 @@ public class ArtistController {
             }
         });
 
-        log.info("회원가입이 되었습니다. 축!! :: "+ artistDto);
+
         Map<String, String> resultMap = new HashMap<>();
 
         return new ResponseEntity(service.signup(artistDto), HttpStatus.OK);
