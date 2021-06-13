@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 const PageList = ({ pageList, page, start, end, prev, next, type = '', keyword = '' }) => {
     const dispatch = useDispatch();
     const movePage = (page) => {
-        const param = { page: page, keyword: keyword, type: type }; //keyword: keyword, page: page
+        const param = { page: page, keyword: keyword, type: type }; 
         dispatch(fetchPage(param));
         dispatch(changeSearch(param));
     };

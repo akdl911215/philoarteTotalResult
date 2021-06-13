@@ -32,7 +32,6 @@ const ArtistList = () => {
             .delete(`http://localhost:8080/artists/delete/${localStorage.getItem('selectDel')}`)
             .then((res) => {
                 console.log(res);
-                alert('삭제되나?');
                 history.push('/');
             })
             .catch((err) => console.log(err));
@@ -42,18 +41,12 @@ const ArtistList = () => {
         console.log('렌더링중..');
 
         fetchList();
-        // alert(fetchList());
     }, []);
 
     const homeButton = () => {
         window.location = '/';
     };
 
-    // const dispatch = useDispatch();
-    useEffect(() => {
-        // alert('1. useEffect > dispatch');
-        // dispatch(getArtistList());
-    }, []);
 
     return (
         <>
