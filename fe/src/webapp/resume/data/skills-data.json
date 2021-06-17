@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "예술",
+    "percentage": "98"
+  },
+  {
+    "id": 2,
+    "title": "인물",
+    "percentage": "66"
+  },
+  {
+    "id": 3,
+    "title": "풍경",
+    "percentage": "85"
+  },
+  {
+    "id": 4,
+    "title": "광고",
+    "percentage": "30"
+  }
+]

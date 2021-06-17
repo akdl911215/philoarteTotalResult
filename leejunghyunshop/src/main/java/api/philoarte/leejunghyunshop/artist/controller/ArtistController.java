@@ -63,7 +63,7 @@ public class ArtistController {
             log.info("thumbnailSaveName : "+ thumbnailSaveName);
 
             try {
-                log.info("try 안에있어요");
+
                 FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(saveName, Boolean.parseBoolean(thumbnailSaveName)));
                 Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
 
@@ -74,7 +74,7 @@ public class ArtistController {
                         .build();
 
                 artistDto.addArtistFileDto(fileDto);
-                log.info("artistDto ::::: " + artistDto);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

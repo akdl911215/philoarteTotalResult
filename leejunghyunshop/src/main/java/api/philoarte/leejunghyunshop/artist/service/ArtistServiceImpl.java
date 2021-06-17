@@ -53,9 +53,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         log.info("artistDto :::: " + artistDto);
         if(!repository.existsByUsername(artistDto.getUsername())){
             Map<String, Object> entityMap = dtoToEntity(artistDto);
-            log.info("entityMap :::: " + entityMap);
 
-            // if 문으로 사진없을시 못들어오게하기
             Artist entity = (Artist) entityMap.get("artist");
             repository.saveAndFlush(entity); // save 안될시 saveAndFlush 변경하자
 
@@ -98,13 +96,6 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         repository.artistDelete(artistId);
     }
 
-//    @Override
-//    public Long ArtistWithrawal(Long artistId) {
-//        Long artistWithrawal = artistId.;
-//                repository.findAllById();
-//
-//        return 0L;
-//    }
 
 
     @Override
@@ -125,8 +116,6 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
 
             if (fileListResult.isPresent()) {
                 fileListResult.get().getArtistFileId();
-
-                log.info("제대로 지나갑니까?");
 
                 String uuid = fileListResult.get().getUuid();
                 String imgName = fileListResult.get().getImgName();
@@ -219,9 +208,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
     @Transactional
     @Override
     public ArtistDto updateMypage(ArtistDto artistDto) {
-            log.info("====================");
             log.info("진입했나? :::::::: " + artistDto);
-            log.info("====================");
 
             Artist artist = repository.getOne(artistDto.getArtistId());
 
@@ -234,17 +221,12 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
 
             repository.save(artist);
             ArtistDto dtoEntity = entityDto(artist);
-            log.info("dtoEntity :::::: " + dtoEntity);
             return dtoEntity;
     }
 
     @Override
     public Long register(ArtistDto artistDto) {
-        log.info("DTO ===============");
-        log.info(artistDto);
         Artist entity = dtoEntity(artistDto);
-        log.info("entity ::::::::::::::");
-        log.info(entity);
         repository.save(entity);
         return null;
     }
@@ -288,17 +270,12 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
 
     @Override
     public PageResultDto<ArtistDto, Artist> getPageList(PageRequestDto requestDto) {
-        log.info("requestDto ::: " + requestDto);
+
         log.info("Artist Page List 를 불러옵니다");
         Pageable pageable = requestDto.getPageable(Sort.by("artistId").descending());
-        log.info("pageable  ::::: " + pageable);
         BooleanBuilder booleanBuilder = getSearch(requestDto); // 검색 조건 처리
-        log.info("booleanBuilder ::: " + booleanBuilder);
         Page<Artist> result = repository.findAll(booleanBuilder, pageable); //Querydsl 사용
-        log.info("result ::: " + result);
         Function<Artist, ArtistDto> fn = (entity -> entityDto(entity));
-        log.info("fn :::: " + fn);
-        log.info("return result :::::: " + result);
         return new PageResultDto<>(result, fn);
     }
 

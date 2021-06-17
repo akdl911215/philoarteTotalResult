@@ -1,6 +1,11 @@
 package api.philoarte.leejunghyunshop.resume.service;
 
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageResultDto;
 import api.philoarte.leejunghyunshop.common.service.AbstractService;
 import api.philoarte.leejunghyunshop.resume.domain.Resume;
@@ -9,17 +14,12 @@ import api.philoarte.leejunghyunshop.resume.domain.ResumeFile;
 import api.philoarte.leejunghyunshop.resume.domain.ResumeFileDto;
 import api.philoarte.leejunghyunshop.resume.repository.ResumeFileRepository;
 import api.philoarte.leejunghyunshop.resume.repository.ResumeRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 @Service
 @RequiredArgsConstructor
 @Log4j2
@@ -50,17 +50,14 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
 
     @Override
     public String editResume(ResumeDto resumeDto) {
-        log.info("EDIT Resume parameter: " + resumeDto);
         Resume resume = Resume.of(resumeDto);
         resume.saveAll(resumeDto);
         fileRepo.deleteByResumeId(resume.getResumeId());
-        log.info("Edit ModelMapped resume: " + resume);
         repo.save(resume);
         List<ResumeFileDto> files = resumeDto.getResumeFiles();
         if (!files.isEmpty()) {
             files.forEach(fileDto -> {
                 ResumeFile rf = dtoToEntityResumeFile(fileDto);
-                log.info("MODIFY ResumeFile: " + rf);
                 rf.saveDetails(fileDto);
                 rf.confirmResume(resume);
                 fileRepo.save(rf);
@@ -70,10 +67,10 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
     }
 
     @Override
-    public Optional<ResumeDto> findById(Long resumeId) {
+    public ResumeDto getById(Long resumeId) {
         Resume resume = repo.findById(resumeId).orElseThrow(IllegalArgumentException::new);
 
-        return null;
+        return resumeEntityToDto(resume);
     }
 
     @Override
@@ -85,7 +82,10 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
         return (repo.findById(resume.getResumeId()).isPresent()) ? "Delete Failed" : "Delete Success";
     }
 
-
+    @Override
+    public Boolean existsById(long id) {
+        return null;
+    }
 
     @Override
     public PageResultDto<ResumeDto, Resume> getAllDataPaging(int page) {
@@ -137,13 +137,6 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
     }
 
     @Override
-    public ResumeDto getById(Long resumeId) {
-        Resume resume = repo.findById(resumeId).orElseThrow(IllegalArgumentException::new);
-
-        return resumeEntityToDto(resume);
-    }
-
-    @Override
     public Optional<ResumeDto> getOne(Long id) {
         // TODO Auto-generated method stub
         return null;
@@ -156,16 +149,6 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
     }
 
 
-
-
-
-    @Override
-    public Boolean existsById(long id) {
-        return null;
-    }
-
-
-
     @Override
     public String save(ResumeDto t) {
         // TODO Auto-generated method stub
@@ -174,6 +157,12 @@ public class ResumeServiceImpl extends AbstractService<ResumeDto> implements Res
 
     @Override
     public Long count() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Optional<ResumeDto> findById(Long id) {
         // TODO Auto-generated method stub
         return null;
     }

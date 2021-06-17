@@ -1,5 +1,6 @@
 package api.philoarte.leejunghyunshop.resume.repository;
 
+
 import api.philoarte.leejunghyunshop.resume.domain.ResumeFile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,8 +17,6 @@ interface ResumeFileCustomRepository {
 @Repository
 @Transactional
 public interface ResumeFileRepository extends JpaRepository<ResumeFile, Long>, ResumeFileCustomRepository {
-
-
 
     @Query("SELECT r from ResumeFile r WHERE r.resume.resumeId= :resumeId")
     List<ResumeFile> getAllForRemove(@Param("resumeId") Long resumeId);

@@ -25,7 +25,7 @@ public class ArtistFile {
     private String path;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_id") // artist_id
+    @JoinColumn(name = "artist_id")
     private Artist artist;
 
 

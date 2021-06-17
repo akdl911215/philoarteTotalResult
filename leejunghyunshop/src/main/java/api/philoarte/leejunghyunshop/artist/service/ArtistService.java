@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 public interface ArtistService {
 
     void artistDelete(Long artistId);
-//    Long ArtistWithrawal(Long artistId);
     ArtistDto signin(ArtistDto artistDto);
     List<Artist> getAllData();
     List<Artist> findAll();

@@ -1,5 +1,9 @@
 package api.philoarte.leejunghyunshop.resume.service;
 
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageResultDto;
 import api.philoarte.leejunghyunshop.resume.domain.Resume;
 import api.philoarte.leejunghyunshop.resume.domain.ResumeDto;
@@ -9,9 +13,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public interface ResumeService {
 
@@ -63,4 +64,5 @@ public interface ResumeService {
 
         return (en -> resumeEntityToDto(en));
     }
+
 }

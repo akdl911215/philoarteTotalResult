@@ -1,25 +1,27 @@
 package api.philoarte.leejunghyunshop.resume.service;
 
-import api.philoarte.leejunghyunshop.resume.domain.ResumeFile;
-import api.philoarte.leejunghyunshop.resume.domain.ResumeFileDto;
-import api.philoarte.leejunghyunshop.resume.repository.ResumeFileRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.geometry.Positions;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import javax.imageio.ImageIO;
+
+import api.philoarte.leejunghyunshop.resume.domain.ResumeFile;
+import api.philoarte.leejunghyunshop.resume.domain.ResumeFileDto;
+import api.philoarte.leejunghyunshop.resume.repository.ResumeFileRepository;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 
 @Log4j2
 @Service
@@ -36,7 +38,6 @@ public class ResumeFileServiceImpl implements ResumeFileService {
         for (MultipartFile uploadFile : uploadFiles) {
             String originalName = uploadFile.getOriginalFilename();
             String fileName = originalName.substring(originalName.lastIndexOf("\\") + 1);
-            log.info("fileName: " + fileName);
             String uuid = UUID.randomUUID().toString();
             String saveName = uploadPath + File.separator + uuid + "_" + fileName;
             Path savePath = Paths.get(saveName);
