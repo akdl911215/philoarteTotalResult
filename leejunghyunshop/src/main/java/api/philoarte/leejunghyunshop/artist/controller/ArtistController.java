@@ -37,6 +37,43 @@ public class ArtistController {
     @Value("${shop.upload.path}")
     private String uploadPath;
 
+    // 데이터 다 날리고 다시해보기
+    @PutMapping("/modify/{artistId}")
+    @ApiOperation(value = "하나의 계정 정보 수정", notes = "하나의 계정 정보를 수정합니다.")
+    public  ResponseEntity<Map<String, String>> artistModifty(ArtistDto artistDto) {
+
+        ArrayList<MultipartFile> files = artistDto.getFiles();
+
+        files.forEach(f -> {
+            log.info(f.getOriginalFilename());
+
+            String uuid = UUID.randomUUID().toString();
+            String saveName = uploadPath + File.separator + uuid + "_" + f.getOriginalFilename();
+            String thumbnailSaveName = uploadPath + File.separator + "s_" + uuid + f.getOriginalFilename();
+
+            try {
+                FileCopyUtils.copy(f.getInputStream(),
+                        new FileOutputStream(saveName, Boolean.parseBoolean(thumbnailSaveName)));
+                Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
+                ArtistFileDto fileDto = ArtistFileDto.builder()
+                                            .uuid(uuid)
+                                            .imgName(f.getOriginalFilename())
+                                            .path(uploadPath)
+                                            .build();
+
+                artistDto.addArtistFileDto(fileDto);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+            Map<String, String> resultMap = new HashMap<>();
+            resultMap.put("Result", "Sucess");
+            service.modify(artistDto);
+
+            return new ResponseEntity(resultMap, HttpStatus.OK);
+    }
+
     @GetMapping("/list/pages")
     public ResponseEntity<PageResultDto<ArtistDto, Object[]>> list(PageRequestDto page) {
         log.info("page................." + page);
@@ -54,13 +91,9 @@ public class ArtistController {
         log.info("Controller 시작");
         ArrayList<MultipartFile> files = artistDto.getFiles();
         files.forEach(file -> {
-            log.info("file.getOriginalFilename() : "+ file.getOriginalFilename());
             String uuid = UUID.randomUUID().toString();
-            log.info("uuid :::::::: " + uuid);
             String saveName = uploadPath + File.separator + uuid + "_" + file.getOriginalFilename();
             String thumbnailSaveName = uploadPath + File.separator + uuid + "s_" + file.getOriginalFilename();
-            log.info("saveName : "+ saveName);
-            log.info("thumbnailSaveName : "+ thumbnailSaveName);
 
             try {
 
@@ -146,38 +179,6 @@ public class ArtistController {
 
         return ResponseEntity.ok("Delete Success!!");
     }
-
-//    @GetMapping("/all")
-//    public ResponseEntity<List<ArtistDto>> all() {
-//        log.info("로그인 하지 않은 사용자도 접근 가능한 URI");
-//        return ResponseEntity.ok(null);
-//    }
-//
-//
-//    @PostMapping("/{username}")
-//    public ResponseEntity<?> auth(@PathVariable String username) {
-//        log.info("로그인한 사용자만 접근 가능한 URI");
-//        return ResponseEntity.ok(null);
-//    }
-//
-//    @PostMapping("/admin")
-//    public ResponseEntity<?> admin() {
-//        log.info("관리자만 접근 가능한 URI");
-//        return ResponseEntity.ok(null);
-//    }
-
-    //    @GetMapping("/list")
-//    public void list(PageRequestDto pageRequestDto, Model model) {
-//        log.info("list................." + pageRequestDto);
-//        model.addAttribute("result", service.getPageList(pageRequestDto));
-//    }
-
-//    @GetMapping("/fetchOne/{artistId}")
-//    public Optional<Artist> findById
-//            (@PathVariable("artistId") Long artistId) {
-//        System.out.println("회원정보 1개를 불러옵니다 ::::::::::");
-//        return service.findById(artistId);
-//    }
 
 }
 

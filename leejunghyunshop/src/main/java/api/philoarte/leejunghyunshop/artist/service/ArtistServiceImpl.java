@@ -90,13 +90,32 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         }
     }
 
-
+    @Transactional
     @Override
-    public void artistDelete(Long artistId) {
-        repository.artistDelete(artistId);
+    public void modify(ArtistDto artistDto) {
+        log.info("modify.... "+artistDto);
+
+        Map<String, Object> entityMap = dtoToEntity(artistDto);
+        Artist artist = repository.getOne(artistDto.getArtistId());
+
+        artist.changePassword(artistDto.getPassword());
+        artist.changePhoneNumber(artistDto.getPhoneNumber());
+        artist.changeEmail(artistDto.getEmail());
+        artist.changeAddress(artistDto.getAddress());
+        artist.changeSchool(artistDto.getSchool());
+        artist.changeDepartment(artistDto.getDepartment());
+        repository.save(artist);
+
+        // 기존 파일 삭제
+        aritstFileRepository.artistFileDelete(artist.getArtistId());
+        if (entityMap.get("fileList") != null && ((List<ArtistFile>)entityMap.get("fileList")).size() > 0) {
+            List<ArtistFile> artistFileList = (List<ArtistFile>) entityMap.get("fileList");
+            artistFileList.forEach(artistFile -> {
+                aritstFileRepository.save(artistFile);
+            });
+        }
+
     }
-
-
 
     @Override
     public ArtistDto signin(ArtistDto artistDto) {

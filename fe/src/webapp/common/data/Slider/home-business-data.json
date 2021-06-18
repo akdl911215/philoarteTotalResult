@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "image": "slides/home-bg-17.jpg",
+    "title": "Experience Beautiful",
+    "text": "We provide a rich suite of creative and technical services",
+    "overlay": true,
+    "backfont": "Business",
+    "buttons": [
+      {
+        "id": 1,
+        "title": "Purchase Theme",
+        "path": "!#",
+        "type": "btn-light-outline btn-lg radius-0"
+      },
+      {
+        "id": 2,
+        "title": "Start a Project",
+        "path": "!#",
+        "type": "btn-color btn-lg radius-0"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "image": "",
+    "title": "Unique Creation",
+    "text": "Design inspired by the ever evolving world",
+    "overlay": true,
+    "backfont": "Creative",
+    "buttons": [
+      {
+        "id": 1,
+        "title": "Purchase Theme",
+        "path": "!#",
+        "type": "btn-light-outline btn-lg radius-0"
+      },
+      {
+        "id": 2,
+        "title": "Start a Project",
+        "path": "!#",
+        "type": "btn-light-outline btn-lg radius-0"
+      }
+    ]
+  }
+]

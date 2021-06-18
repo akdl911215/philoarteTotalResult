@@ -87,7 +87,6 @@ const MyPage = () => {
             imgName: artistsState.imgName,
             files: artistsState.files,
             token: artistsState.token,
-            files: artistsState.files,
             artistId: artistsState.artistId,
             username: artistsState.usename,
             password: mypage.password,
@@ -97,8 +96,6 @@ const MyPage = () => {
             address: mypage.address,
             school: mypage.school,
             department: mypage.department,
-            uuid: artistsState.uuid,
-            imgName: artistsState.artistsState,
         };
         console.log('obj ::::::::: ', obj);
 
@@ -152,7 +149,9 @@ const MyPage = () => {
         setFiles(fileObj.files);
     };
 
-    const removeImgBtn = (e) => {};
+    const clickUpdate = () => {
+
+    }
 
     return (
         <>
@@ -169,6 +168,8 @@ const MyPage = () => {
                             {/* <div className="display-flex" style={{ marginBottom: '50px' }}></div> */}
                             <div>
                                 <img src={'http://localhost:8080/artist_files/display?imgName=' + `${artistsFilesUuid}` + 's_' + `${artistsFilesimgName}`} />
+                                <input type="`hidden`" name="file" id="reviewFileDtoList" className="md-textarea" rows="7" multiple={true} onChange={(e) => clickUpdate(e)}></input>
+
                                 <br />
                                 <br />
                                 <br />

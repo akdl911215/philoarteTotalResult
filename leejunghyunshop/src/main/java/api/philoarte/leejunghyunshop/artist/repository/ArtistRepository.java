@@ -1,7 +1,6 @@
 package api.philoarte.leejunghyunshop.artist.repository;
 
 import api.philoarte.leejunghyunshop.artist.domain.Artist;
-import api.philoarte.leejunghyunshop.artist.domain.dto.ArtistDto;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

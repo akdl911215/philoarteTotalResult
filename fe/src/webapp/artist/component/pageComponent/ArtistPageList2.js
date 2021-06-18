@@ -40,7 +40,7 @@ const ArtistPageList2 = () => {
                 <table className="table table-striped table-bordered">
                     <table>
                         <thead style={{ textAlign: 'center' }}>
-                            <th>대표이미지</th>
+                            {/*<th>대표이미지</th>*/}
                             <th>유저넘버 </th>
                             <th>아이디 </th>
                             <th>비밀번호 </th>

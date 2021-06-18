@@ -7,4 +7,8 @@ module.exports = (app) => {
       changeOrigin: true }) 
       ); 
     };
-
+// AWS.config.update({
+//     accessKeyId: process.env.AKIAXKQOJEPQQDFFCREW,
+//     secretAccessKey: process.env.ZdswSYiW9qnuy/dtCQtaoscnXYW5+BzKgPCjmMaq,
+//     region: "an-northeast-2"
+// })

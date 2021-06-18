@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "title": "장해솔",
+    "role": "Funding",
+    "image": "team/ssol.JPG",
+    "social": [
+      {
+        "id": 1,
+        "title": "github",
+        "classes": "fb"
+      },
+      {
+        "id": 2,
+        "title": "twitter",
+        "classes": "tw"
+      },
+      {
+        "id": 3,
+        "title": "behance",
+        "classes": "be"
+      },
+      {
+        "id": 4,
+        "title": "linkedin",
+        "classes": "in"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "박재민",
+    "role": "Review/Reply",
+    "image": "team/jaemin.png",
+    "social": [
+      {
+        "id": 1,
+        "title": "facebook",
+        "classes": "fb"
+      },
+      {
+        "id": 2,
+        "title": "twitter",
+        "classes": "tw"
+      },
+      {
+        "id": 3,
+        "title": "behance",
+        "classes": "be"
+      },
+      {
+        "id": 4,
+        "title": "linkedin",
+        "classes": "in"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "박기범",
+    "role": "Work",
+    "image": "team/kibum.jpg",
+    "social": [
+      {
+        "id": 1,
+        "title": "facebook",
+        "classes": "fb"
+      },
+      {
+        "id": 2,
+        "title": "twitter",
+        "classes": "tw"
+      },
+      {
+        "id": 3,
+        "title": "behance",
+        "classes": "be"
+      },
+      {
+        "id": 4,
+        "title": "linkedin",
+        "classes": "in"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "오진욱",
+    "role": "Resume",
+    "image": "team/wlsdnr.JPG",
+    "social": [
+      {
+        "id": 1,
+        "title": "facebook",
+        "classes": "fb"
+      },
+      {
+        "id": 2,
+        "title": "twitter",
+        "classes": "tw"
+      },
+      {
+        "id": 3,
+        "title": "behance",
+        "classes": "be"
+      },
+      {
+        "id": 4,
+        "title": "linkedin",
+        "classes": "in"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "PhiloArte",
+    "role": "TeamProject",
+    "image": "team/123211.jpg",
+    "social": [
+      {
+        "id": 1,
+        "title": "facebook",
+        "classes": "fb"
+      },
+      {
+        "id": 2,
+        "title": "twitter",
+        "classes": "tw"
+      },
+      {
+        "id": 3,
+        "title": "behance",
+        "classes": "be"
+      },
+      {
+        "id": 4,
+        "title": "linkedin",
+        "classes": "in"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "이정현",
+    "role": "Artist",
+    "image": "team/aaa.jpg",
+    "social": [
+      {
+        "id": 1,
+        "title": "facebook",
+        "classes": "fb"
+      },
+      {
+        "id": 2,
+        "title": "twitter",
+        "classes": "tw"
+      },
+      {
+        "id": 3,
+        "title": "behance",
+        "classes": "be"
+      },
+      {
+        "id": 4,
+        "title": "linkedin",
+        "classes": "in"
+      }
+    ]
+  }
+]

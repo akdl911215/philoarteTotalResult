@@ -49,15 +49,11 @@ const Signup = () => {
         e.preventDefault();
         e.stopPropagation();
 
-        console.log('files :::: ', files);
-        console.log('signup :::: ', signup);
-
         // formData : file을 업로드
         const formData = new FormData();
         console.log('formData) ::: ', formData);
 
         for (let i = 0; i < files.length; i++) {
-            console.log('for files :::::::::', files);
             formData.append('files[' + i + ']', files[i]);
         }
 
@@ -69,25 +65,9 @@ const Signup = () => {
         formData.append('address', signup.address);
         formData.append('school', signup.school);
         formData.append('department', signup.department);
-        console.log('formData : ', formData);
-        console.log('==============================');
 
-        console.log(signup.username);
-        console.log(signup.password);
-        console.log(signup.name);
-        console.log(signup.email);
-        console.log(signup.phoneNumber);
-        console.log(signup.address);
-        console.log(signup.school);
-        console.log(signup.department);
-        console.log('==============================');
-
-        // const param = { formData: formData, username: username, password: password, name: name, email: email, phoneNumber: phoneNumber, address: address, school: school, department: department };
-
-        // await dispatch(signupPage(signup));
         await dispatch(signupPage(formData));
         console.log('dispatch formData : ', formData);
-        // console.log('dispatch signup : ', signup);
         history.push('/artists/artists_signin');
     };
 
@@ -96,12 +76,6 @@ const Signup = () => {
         window.location = 'http://localhost:3000/artist/artist-signin';
     };
 
-    // const register = async (e) => {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-
-    //     // history.push('/');
-    // };
 
     return (
         <>

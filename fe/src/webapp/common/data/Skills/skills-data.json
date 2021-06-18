@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "HTML5 Expertise",
+    "percentage": "98"
+  },
+  {
+    "id": 2,
+    "title": "jQuery Expertise",
+    "percentage": "66"
+  },
+  {
+    "id": 3,
+    "title": "WordPress Expertise",
+    "percentage": "85"
+  },
+  {
+    "id": 4,
+    "title": "PHP Expertise",
+    "percentage": "30"
+  }
+]

@@ -5,14 +5,14 @@ const SERVER = 'http://localhost:8080';
 const list = (page) => {
     console.log('page :: ', page);
     const str = 'page=' + (!page.page ? 1 : page.page) + '&type=' + (page.type ? page.type : '') + '&keyword=' + (page.keyword ? page.keyword : '');
-    return axios.get(`/artists/list/pages?` + str);
+    return axios.get(`${SERVER}/artists/list/pages?` + str);
 };
 
-const imgList = (imgList) => {
-    console.log('imgList :: ', imgList);
-    const str = 'page=' + (!imgList.page ? 1 : imgList.page) + '&type=' + (imgList.type ? imgList.type : '') + '&keyword=' + (imgList.keyword ? imgList.keyword : '') + '&pageFileDto=' + (imgList.pageFileDto ? imgList.pageFileDto : '');
-    return axios.get(`/artist_files/imgList/pages` + str);
-};
+// const imgList = (imgList) => {
+//     console.log('imgList :: ', imgList);
+//     const str = 'page=' + (!imgList.page ? 1 : imgList.page) + '&type=' + (imgList.type ? imgList.type : '') + '&keyword=' + (imgList.keyword ? imgList.keyword : '') + '&pageFileDto=' + (imgList.pageFileDto ? imgList.pageFileDto : '');
+//     return axios.get(`/artist_files/imgList/pages` + str);
+// };
 
 const signin = (signin) => {
     return axios({
@@ -53,15 +53,15 @@ const mypage = (artist) => {
 };
 
 const deleteSelect = (deleteSelect) => {
-    return axios.put(`/artists/delete`, deleteSelect);
+    return axios.put(`${SERVER}/artists/delete`, deleteSelect);
 };
 
 const totalSearchBar = (totalSearchBar) => {
-    return axios.put(`/page/totalSearchBar`, totalSearchBar);
+    return axios.put(`${SERVER}/page/totalSearchBar`, totalSearchBar);
 };
 
 const imgDel = (imgDel) => {
-    return axios.put(`/page/imgDel`, imgDel);
+    return axios.put(`${SERVER}/page/imgDel`, imgDel);
 };
 
-export default {list, signin, signup, mypage, totalSearchBar, deleteSelect, imgDel, imgList};
+export default {list, signin, signup, mypage, totalSearchBar, deleteSelect, imgDel};
