@@ -4,6 +4,7 @@ import api.philoarte.leejunghyunshop.art.repository.ArtFileRepository;
 import api.philoarte.leejunghyunshop.art.repository.ArtRepository;
 import api.philoarte.leejunghyunshop.artist.domain.*;
 import api.philoarte.leejunghyunshop.artist.domain.dto.ArtistDto;
+import api.philoarte.leejunghyunshop.artist.domain.dto.ArtistFileDto;
 import api.philoarte.leejunghyunshop.artist.domain.role.Role;
 import api.philoarte.leejunghyunshop.artist.repository.fileRepository.ArtistFileRepository;
 import api.philoarte.leejunghyunshop.common.domain.pageDomainDto.PageRequestDto;
@@ -107,8 +108,16 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         repository.save(artist);
 
         // 기존 파일 삭제
+        log.info("repository 진행 후 filerepository 진행 전");
+        log.info("aritstFileRepository : " + aritstFileRepository);
         aritstFileRepository.artistFileDelete(artist.getArtistId());
+        log.info("=============================================================================================");
+        log.info("entityMap.get(\"fileList\") : " + entityMap.get("fileList"));
+        log.info("((List<ArtistFile>)entityMap.get(\"fileList\")).size() : " + ((List<ArtistFile>)entityMap.get("fileList")).size() );
+        log.info("=============================================================================================");
+        log.info(entityMap.get("fileList") != null && ((List<ArtistFile>)entityMap.get("fileList")).size() > 0);
         if (entityMap.get("fileList") != null && ((List<ArtistFile>)entityMap.get("fileList")).size() > 0) {
+            log.info("ServiceImpl 파일 삭제 if 진입");
             List<ArtistFile> artistFileList = (List<ArtistFile>) entityMap.get("fileList");
             artistFileList.forEach(artistFile -> {
                 aritstFileRepository.save(artistFile);
@@ -121,17 +130,37 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
     public ArtistDto signin(ArtistDto artistDto) {
         log.info("Signin 시작");
         try {
-            Artist entity = dtoEntity(artistDto);
+//            Artist entity = dtoEntity(artistDto);
+            Artist entity = (Artist) dtoToEntity(artistDto);
+            ArtistFileDto fileDtoListEntity = (ArtistFileDto) dtoToEntity(artistDto);
+
             repository.signin(entity.getUsername(), entity.getPassword());
+            log.info("fileDtoListEntity.getArtistFileId() :: " + fileDtoListEntity.getArtistFileId());
+            log.info("artistDto.getArtistFileId() ::: " + artistDto.getArtistFileId());
+            aritstFileRepository.findById(fileDtoListEntity.getArtistFileId());
+
+
             ArtistDto entityDto = entityDto(entity);
+            log.info("entityDto === " + entityDto);
+            log.info("artistDto.getArtistFileId() ::: " + artistDto.getArtistFileId());
+            entityDto.setArtistFileId(artistDto.getArtistFileId());
+            log.info("entityDto :::: " + entityDto);
+
+
             Optional<Artist> comprehensiveInfomationArtist = repository.findByUsername(entity.getUsername());
             Long artistFileId = comprehensiveInfomationArtist.get().getArtistId();
+
+            Long artistFileIdSetting = entityDto.getArtistFileId();
+            log.info("artistFileIdSetting :: " + artistFileIdSetting);
+            Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistFileIdSetting);
+
             entityDto(comprehensiveInfomationArtist.get());
             entityDto = entityDto(comprehensiveInfomationArtist.get());
             String Token = provider.createToken(entity.getUsername(), repository.findByUsername(entity.getUsername()).get().getRoles());
             entityDto.setToken(Token);
-            Long artistFileIdSetting = entityDto.getArtistId();
-            Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistFileIdSetting);
+
+
+            log.info("fileListResult ::: " + fileListResult);
 
             if (fileListResult.isPresent()) {
                 fileListResult.get().getArtistFileId();

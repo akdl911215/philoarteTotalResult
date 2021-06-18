@@ -52,6 +52,7 @@ public class ArtistController {
             String thumbnailSaveName = uploadPath + File.separator + "s_" + uuid + f.getOriginalFilename();
 
             try {
+                log.info("modify try 진입 : ");
                 FileCopyUtils.copy(f.getInputStream(),
                         new FileOutputStream(saveName, Boolean.parseBoolean(thumbnailSaveName)));
                 Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
@@ -61,6 +62,7 @@ public class ArtistController {
                                             .path(uploadPath)
                                             .build();
 
+                log.info("artistDto :: " + artistDto);
                 artistDto.addArtistFileDto(fileDto);
             } catch (Exception e) {
                 e.printStackTrace();

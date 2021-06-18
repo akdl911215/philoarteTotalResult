@@ -29,6 +29,7 @@ public class ArtistDto {
 
     private String uuid;
     private String imgName;
+    private Long artistFileId;
     private List<ArtistFileDto> fileDto;
     private List<Role> roles;
     private String token;
@@ -85,6 +86,6 @@ public class ArtistDto {
     public String getDepartment(){
         return department;
     }
-
+    public Long getArtistFileId() { return artistFileId; }
 
 }
