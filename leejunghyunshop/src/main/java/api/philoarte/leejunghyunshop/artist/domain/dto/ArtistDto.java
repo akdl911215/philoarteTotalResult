@@ -86,6 +86,9 @@ public class ArtistDto {
     public String getDepartment(){
         return department;
     }
+    public void setArtistFileId(Long artistFileId){
+        this.artistFileId = artistFileId;
+    }
     public Long getArtistFileId() { return artistFileId; }
 
 }

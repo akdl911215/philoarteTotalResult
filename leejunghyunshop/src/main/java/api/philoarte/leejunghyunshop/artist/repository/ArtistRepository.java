@@ -17,6 +17,8 @@ import java.util.Optional;
 public interface ArtistRepository extends JpaRepository<Artist, Long>,
                         QuerydslPredicateExecutor<Artist> {
 
+
+
     @Transactional
     @Modifying
     @Query("DELETE FROM Artist ar WHERE ar.artistId = :artistId")

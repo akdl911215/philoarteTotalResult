@@ -52,19 +52,19 @@ class ReplyRepositoryTests {
         System.out.println(reply.getReview());
     }
 
-    @Test
-    public void testGetReviewReplies(){
-        Review review = Review.builder().reviewId(6L).build();
-
-        List<Reply> result = replyRepository.getRepliesByReviewOrderByRegDateDesc(review);
-//        List<Reply> result = replyRepository.getRepliesByReviewOrderByRegDateAsc(review);
-
-        result.forEach(reviewReply->{
-            System.out.println(reviewReply.getRno());
-            System.out.println("\t"+reviewReply.getText());
-            System.out.println("\t"+reviewReply.getReview().getReviewId());
-        });
-    }
+//    @Test
+//    public void testGetReviewReplies(){
+//        Review review = Review.builder().reviewId(6L).build();
+//
+//        List<Reply> result = replyRepository.getRepliesByReviewOrderByRegDateDesc(review);
+////        List<Reply> result = replyRepository.getRepliesByReviewOrderByRegDateAsc(review);
+//
+//        result.forEach(reviewReply->{
+//            System.out.println(reviewReply.getRno());
+//            System.out.println("\t"+reviewReply.getText());
+//            System.out.println("\t"+reviewReply.getReview().getReviewId());
+//        });
+//    }
 
 
 }

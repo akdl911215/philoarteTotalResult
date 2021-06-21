@@ -130,6 +130,8 @@ public class ArtistController {
     public ResponseEntity<ArtistDto> signin
             (@ApiParam("Signin Artist") @RequestBody ArtistDto artistDto) throws IOException {
         log.info("Artist Signin(로그인) start :::::::::: " + artistDto);
+        // 서비스로 넘어가기전에 artistId를 넣어주자.
+//        service.findById()
 
         return ResponseEntity.ok(service.signin(artistDto));
     }

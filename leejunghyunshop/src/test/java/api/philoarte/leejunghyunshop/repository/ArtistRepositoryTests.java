@@ -4,6 +4,7 @@ package api.philoarte.leejunghyunshop.repository;
 import api.philoarte.leejunghyunshop.artist.domain.Artist;
 import api.philoarte.leejunghyunshop.artist.domain.QArtist;
 import api.philoarte.leejunghyunshop.artist.repository.ArtistRepository;
+import api.philoarte.leejunghyunshop.artist.repository.fileRepository.ArtistFileRepository;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -33,14 +34,15 @@ public class ArtistRepositoryTests {
     @Autowired
     private ArtistRepository repository;
 
+
+
     // 영속성 컨텍스트(Persistence Context) - Entity를 영구 저장하는 환경
     @PersistenceContext // 영속성 객체를 자동으로 삽입
     private EntityManager entityManager; // EntityManager 실제 Transaction 단위를 수행할 때마다 생성
 
-    @Test
-    public void test() {
-        log.info("-----------------------");
-    }
+
+
+
 
 //    @Transactional
 //    @Commit

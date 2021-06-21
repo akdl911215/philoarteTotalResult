@@ -58,6 +58,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
             Artist entity = (Artist) entityMap.get("artist");
             repository.saveAndFlush(entity); // save 안될시 saveAndFlush 변경하자
 
+
             List<ArtistFile> artistFileList = (List<ArtistFile>) entityMap.get("fileList");
 
             if (artistFileList != null && artistFileList.size() > 0) {
@@ -108,14 +109,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         repository.save(artist);
 
         // 기존 파일 삭제
-        log.info("repository 진행 후 filerepository 진행 전");
-        log.info("aritstFileRepository : " + aritstFileRepository);
         aritstFileRepository.artistFileDelete(artist.getArtistId());
-        log.info("=============================================================================================");
-        log.info("entityMap.get(\"fileList\") : " + entityMap.get("fileList"));
-        log.info("((List<ArtistFile>)entityMap.get(\"fileList\")).size() : " + ((List<ArtistFile>)entityMap.get("fileList")).size() );
-        log.info("=============================================================================================");
-        log.info(entityMap.get("fileList") != null && ((List<ArtistFile>)entityMap.get("fileList")).size() > 0);
         if (entityMap.get("fileList") != null && ((List<ArtistFile>)entityMap.get("fileList")).size() > 0) {
             log.info("ServiceImpl 파일 삭제 if 진입");
             List<ArtistFile> artistFileList = (List<ArtistFile>) entityMap.get("fileList");
@@ -130,29 +124,59 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
     public ArtistDto signin(ArtistDto artistDto) {
         log.info("Signin 시작");
         try {
-//            Artist entity = dtoEntity(artistDto);
-            Artist entity = (Artist) dtoToEntity(artistDto);
-            ArtistFileDto fileDtoListEntity = (ArtistFileDto) dtoToEntity(artistDto);
+            Artist entity = dtoEntity(artistDto);
+//            Artist entity = (Artist) dtoToEntity(artistDto);
+//            ArtistFileDto fileDtoListEntity = (ArtistFileDto) dtoToEntity(artistDto);
 
             repository.signin(entity.getUsername(), entity.getPassword());
-            log.info("fileDtoListEntity.getArtistFileId() :: " + fileDtoListEntity.getArtistFileId());
-            log.info("artistDto.getArtistFileId() ::: " + artistDto.getArtistFileId());
-            aritstFileRepository.findById(fileDtoListEntity.getArtistFileId());
+
+            entity.getArtistId();
+            log.info("entity :: " + entity);
 
 
             ArtistDto entityDto = entityDto(entity);
-            log.info("entityDto === " + entityDto);
-            log.info("artistDto.getArtistFileId() ::: " + artistDto.getArtistFileId());
-            entityDto.setArtistFileId(artistDto.getArtistFileId());
-            log.info("entityDto :::: " + entityDto);
+//            log.info("entityDto === " + entityDto);
+//            log.info("artistDto.getArtistFileId() ::: " + artistDto.getArtistFileId());
+//            entityDto.setArtistFileId(artistDto.getArtistFileId());
+//            log.info("entityDto :::: " + entityDto);
+
+            // fileDTo에는 artistFileId,artistId 가 있다.
+            // artistId로 artistFile에가서 정보들은 가져온다.
+//            aritstFileRepository.findById()
+            // 그 정보들 중에서 artistFileId만 뺴온다
+
+
+
+//            Long artistFileId = aritstFileRepository.findByArtistFileId(entityDto.getArtistFileId());
+//            log.info("artistFileId ::: --- " + artistFileId);
+//
+//            Map<String, Long> resultMap = new HashMap<>();
+//            entityDto.getArtistFileDtoList().forEach(file -> {
+//                resultMap.put("artistFileId", file.getArtistFileId());
+//            });
+//            log.info("resultMap ::: " + resultMap);
+
 
 
             Optional<Artist> comprehensiveInfomationArtist = repository.findByUsername(entity.getUsername());
-            Long artistFileId = comprehensiveInfomationArtist.get().getArtistId();
+            Long artistId = comprehensiveInfomationArtist.get().getArtistId();
+
 
             Long artistFileIdSetting = entityDto.getArtistFileId();
             log.info("artistFileIdSetting :: " + artistFileIdSetting);
-            Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistFileIdSetting);
+
+            log.info("============================================");
+            Long artistFileId = aritstFileRepository.findByArtistId(artistId);
+            log.info("artistFileId :: " + artistFileId);
+            List<ArtistFile> artistFile = aritstFileRepository.findAll();
+            log.info("artistFile :: " + artistFile);
+
+
+
+            // 이부분이 artistId 와 artistFileId 연결부분
+            Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistId);
+
+
 
             entityDto(comprehensiveInfomationArtist.get());
             entityDto = entityDto(comprehensiveInfomationArtist.get());
