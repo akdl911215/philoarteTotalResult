@@ -7,7 +7,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-//@EntityListeners(value = {AuditingEntityListener.class})
 @Entity
 @Table(name = "artists")
 @Getter

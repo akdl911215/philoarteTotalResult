@@ -125,43 +125,13 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         log.info("Signin 시작");
         try {
             Artist entity = dtoEntity(artistDto);
-//            Artist entity = (Artist) dtoToEntity(artistDto);
-//            ArtistFileDto fileDtoListEntity = (ArtistFileDto) dtoToEntity(artistDto);
-
             repository.signin(entity.getUsername(), entity.getPassword());
-
             entity.getArtistId();
             log.info("entity :: " + entity);
-
-
             ArtistDto entityDto = entityDto(entity);
-//            log.info("entityDto === " + entityDto);
-//            log.info("artistDto.getArtistFileId() ::: " + artistDto.getArtistFileId());
-//            entityDto.setArtistFileId(artistDto.getArtistFileId());
-//            log.info("entityDto :::: " + entityDto);
-
-            // fileDTo에는 artistFileId,artistId 가 있다.
-            // artistId로 artistFile에가서 정보들은 가져온다.
-//            aritstFileRepository.findById()
-            // 그 정보들 중에서 artistFileId만 뺴온다
-
-
-
-//            Long artistFileId = aritstFileRepository.findByArtistFileId(entityDto.getArtistFileId());
-//            log.info("artistFileId ::: --- " + artistFileId);
-//
-//            Map<String, Long> resultMap = new HashMap<>();
-//            entityDto.getArtistFileDtoList().forEach(file -> {
-//                resultMap.put("artistFileId", file.getArtistFileId());
-//            });
-//            log.info("resultMap ::: " + resultMap);
-
-
 
             Optional<Artist> comprehensiveInfomationArtist = repository.findByUsername(entity.getUsername());
             Long artistId = comprehensiveInfomationArtist.get().getArtistId();
-
-
             Long artistFileIdSetting = entityDto.getArtistFileId();
             log.info("artistFileIdSetting :: " + artistFileIdSetting);
 
@@ -172,8 +142,7 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
             log.info("artistFile :: " + artistFile);
 
 
-
-            // 이부분이 artistId 와 artistFileId 연결부분
+            // artistId and artistFileId
             Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistId);
 
 
@@ -205,11 +174,6 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
             String imgName = fileListResult.get().getImgName();
             entityDto.setUuid(uuid);
             entityDto.setImgName(imgName);
-//            entityDto.setToken(
-//                    (passwordEncoder.matches(entityDto.getPassword(), repository.findByUsername(entity.getUsername()).get().getPassword())
-//            ) ?
-//            provider.createToken(entity.getUsername(), repository.findByUsername(entity.getUsername()).get().getRoles())
-//            : "WRONG_PASSWORD");
             log.info("리턴 직전");
             return entityDto;
         } catch (Exception e){
