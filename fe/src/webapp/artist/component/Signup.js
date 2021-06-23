@@ -37,11 +37,6 @@ const Signup = () => {
         e.preventDefault();
         e.stopPropagation();
         const fileObject = e.target;
-
-        console.log('============================');
-        console.log(fileObject.files); // .log : 매개변수로 전달된 값을 출력
-        console.dir(fileObject.files); // .dir : js 객체의 속성 출력
-        console.log('============================');
         setFiles(fileObject.files);
     };
 
@@ -141,7 +136,6 @@ const Signup = () => {
                             className="signupbtn"
                             onClick={(e) => {
                                 handleSubmit(e);
-                                // register(e);
                             }}
                         >
                             Sign Up

@@ -126,7 +126,7 @@ const artistSlice = createSlice({
         },
     },
 });
-// const { action, reducer } = artistSlice;
+
 export const currentArtist2 = (state) => state.artists.artistsState;
 export const currentArtist = (state) => state.artists.params;
 export const { getLocalArtist, changeSearch, getArtistImgList } = artistSlice.actions;
