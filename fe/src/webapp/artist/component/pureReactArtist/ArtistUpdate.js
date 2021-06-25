@@ -8,7 +8,6 @@ const ArtistUpdate = () => {
     const { username, password, name, email, phoneNumber, address, school, department } = details;
 
     const fetchOne = () => {
-        alert('정보를 가져옵니다');
         alert(`${localStorage.getItem('select')}`);
 
         axios
@@ -35,11 +34,9 @@ const ArtistUpdate = () => {
 
     const handleSubmit = useCallback(
         (e) => {
-            alert('정보를 보냅니다');
             alert(`${localStorage.getItem('select')}`);
 
             e.preventDefault();
-            console.log('업데이트 진행중');
             axios
                 .put(`http://localhost:8080/artists/update/${localStorage.getItem('select')}`, {
                     username,

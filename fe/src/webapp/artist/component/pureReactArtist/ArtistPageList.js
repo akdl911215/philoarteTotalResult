@@ -17,7 +17,6 @@ const ArtistPageList = () => {
     };
 
     useEffect(() => {
-        console.log('렌더링중..');
 
         fetchList();
         alert(fetchList());

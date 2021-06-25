@@ -64,17 +64,8 @@ const MyPage = () => {
         imgName: artistsState.imgName,
         files: artistsState.files,
         token: artistsState.token,
-        uuid: artistsState.uuid,
-        imgName: artistsState.imgName,
     });
-    console.log('mypage ::::::::::: ', mypage);
-    console.log('artistsState.uuide ::::::::::: ', artistsState.uuid);
-    console.log('mypage.uuid ::::::::::: ', mypage.uuid);
-    console.log('artistsState.imgName ::::::::::: ', artistsState.imgName);
-    console.log('mypage.imgName ::::::::::: ', mypage.imgName);
-
     useEffect(() => {
-        console.log('getLocalArtist :::: ', getLocalArtist);
         dispatch(getLocalArtist());
     }, []);
 
@@ -97,7 +88,6 @@ const MyPage = () => {
             school: mypage.school,
             department: mypage.department,
         };
-        console.log('obj ::::::::: ', obj);
 
         const formData = new FormData();
         for (let i = 0; i < files.length; i++) {
@@ -165,17 +155,13 @@ const MyPage = () => {
                             <b>대표이미지</b>
                         </label>
                         <td>
-                            {/* <div className="display-flex" style={{ marginBottom: '50px' }}></div> */}
+
                             <div>
                                 <img src={'http://localhost:8080/artist_files/display?imgName=' + `${artistsFilesUuid}` + 's_' + `${artistsFilesimgName}`} />
                                 <input type="`hidden`" name="file" id="reviewFileDtoList" className="md-textarea" rows="7" multiple={true} onChange={(e) => clickUpdate(e)}></input>
-
                                 <br />
                                 <br />
                                 <br />
-
-                                {/* <button>upload</button>
-                                <button onClick={(e) => removeImgBtn(e)}>remove</button> */}
                             </div>
                         </td>
 

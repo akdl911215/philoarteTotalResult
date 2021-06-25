@@ -8,11 +8,6 @@ const list = (page) => {
     return axios.get(`${SERVER}/artists/list/pages?` + str);
 };
 
-// const imgList = (imgList) => {
-//     console.log('imgList :: ', imgList);
-//     const str = 'page=' + (!imgList.page ? 1 : imgList.page) + '&type=' + (imgList.type ? imgList.type : '') + '&keyword=' + (imgList.keyword ? imgList.keyword : '') + '&pageFileDto=' + (imgList.pageFileDto ? imgList.pageFileDto : '');
-//     return axios.get(`/artist_files/imgList/pages` + str);
-// };
 
 const signin = (signin) => {
     return axios({

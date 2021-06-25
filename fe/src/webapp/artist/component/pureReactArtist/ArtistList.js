@@ -24,22 +24,17 @@ const ArtistList = () => {
 
     const deleteButton = () => {
         alert(`삭제됩니다`);
-        console.log('artistsList :::::::: ' + artistsList);
         JSON.stringify('artistsList :::' + artistsList);
-        console.log('deleteButton :::::::: ' + deleteButton);
-        console.log(`${localStorage.getItem('selectDel')}`);
         axios
             .delete(`http://localhost:8080/artists/delete/${localStorage.getItem('selectDel')}`)
             .then((res) => {
                 console.log(res);
-                alert('삭제되나?');
                 history.push('/');
             })
             .catch((err) => console.log(err));
     };
 
     useEffect(() => {
-        console.log('렌더링중..');
         fetchList();
     }, []);
 

@@ -46,7 +46,6 @@ const Signup = () => {
 
         // formData : file을 업로드
         const formData = new FormData();
-        console.log('formData) ::: ', formData);
 
         for (let i = 0; i < files.length; i++) {
             formData.append('files[' + i + ']', files[i]);
@@ -62,7 +61,6 @@ const Signup = () => {
         formData.append('department', signup.department);
 
         await dispatch(signupPage(formData));
-        console.log('dispatch formData : ', formData);
         history.push('/artists/artists_signin');
     };
 
