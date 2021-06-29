@@ -5,6 +5,7 @@ import api.philoarte.leejunghyunshop.common.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -45,8 +46,13 @@ public class Artist extends BaseEntity {
     @Column(name = "department")
     private String department;
 
+    @OneToMany(mappedBy = "artist")
+    private List<ArtistFile> artistFiles = new ArrayList<>();
+
      @ElementCollection(fetch = FetchType.EAGER)
      List<Role> roles;
+
+     public void changeArtistsFiles(List<ArtistFile> artistFiles) { this.artistFiles = artistFiles; }
 
     public void changeRoles(List<Role> roles){
          this.roles = roles;

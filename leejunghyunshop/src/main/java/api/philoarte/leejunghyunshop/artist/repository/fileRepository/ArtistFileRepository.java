@@ -21,4 +21,6 @@ public interface ArtistFileRepository extends JpaRepository<ArtistFile, Long> {
     @EntityGraph(attributePaths = "artist")
     @Query("SELECT af FROM ArtistFile af WHERE af.artist.artistId = :artistId")
     Long findByArtistId(@Param("artistId") Long artistId);
+
+    Long findByArtistFileId(@Param("artistFileId") Long artistFileId);
 }

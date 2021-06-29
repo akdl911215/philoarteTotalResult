@@ -131,6 +131,7 @@ public interface ArtistService {
                 .address(artistDto.getAddress())
                 .school(artistDto.getSchool())
                 .department(artistDto.getDepartment())
+                .artistFiles(artistDto.getArtistFiles())
                 .build();
 
         return entity;

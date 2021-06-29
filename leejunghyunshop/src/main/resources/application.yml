@@ -10,8 +10,6 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
-
-
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

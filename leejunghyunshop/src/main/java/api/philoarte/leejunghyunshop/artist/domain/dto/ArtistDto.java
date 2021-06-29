@@ -1,5 +1,6 @@
 package api.philoarte.leejunghyunshop.artist.domain.dto;
 
+import api.philoarte.leejunghyunshop.artist.domain.ArtistFile;
 import api.philoarte.leejunghyunshop.artist.domain.role.Role;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
@@ -33,6 +34,7 @@ public class ArtistDto {
     private List<ArtistFileDto> fileDto;
     private List<Role> roles;
     private String token;
+    private List<ArtistFile> artistFiles;
 
     @Builder.Default
     private ArrayList<MultipartFile> files = new ArrayList<>();

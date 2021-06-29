@@ -100,7 +100,7 @@ public class ArtistController {
             try {
 
                 FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(saveName, Boolean.parseBoolean(thumbnailSaveName)));
-                Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
+                    Thumbnails.of(new File(saveName)).size(100, 100).outputFormat("jpg").toFile(thumbnailSaveName);
 
                 ArtistFileDto fileDto = ArtistFileDto.builder()
                         .uuid(uuid)
@@ -130,6 +130,7 @@ public class ArtistController {
     public ResponseEntity<ArtistDto> signin
             (@ApiParam("Signin Artist") @RequestBody ArtistDto artistDto) throws IOException {
         log.info("Artist Signin(로그인) start :::::::::: " + artistDto);
+
 
         return ResponseEntity.ok(service.signin(artistDto));
     }

@@ -24,6 +24,8 @@ public interface ArtistRepository extends JpaRepository<Artist, Long>,
     @Query("DELETE FROM Artist ar WHERE ar.artistId = :artistId")
     void artistDelete(@Param("artistId") Long artistId);
 
+
+
     boolean existsByUsername(@Param("username")String username);
     Optional<Artist> findByUsername(String username);
 
@@ -34,10 +36,12 @@ public interface ArtistRepository extends JpaRepository<Artist, Long>,
     @Query(value = "select * from artists where username=:username and password=:password", nativeQuery = true)
     Artist signin(@Param("username") String username, @Param("password")String password);
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE Artist a SET a.username = :username WHERE a.artistId = :artistId")
-    Long ArtistWithrawal(@Param("artistId") Long artistId, @Param("username") String username);
+
+
+//    @Modifying
+//    @Transactional
+//    @Query("UPDATE Artist a SET a.username = :username WHERE a.artistId = :artistId")
+//    Long ArtistWithrawal(@Param("artistId") Long artistId, @Param("username") String username);
 
 
 }

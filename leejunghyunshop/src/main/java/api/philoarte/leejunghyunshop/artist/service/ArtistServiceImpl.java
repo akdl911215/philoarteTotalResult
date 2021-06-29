@@ -120,66 +120,6 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
 
     }
 
-    @Override
-    public ArtistDto signin(ArtistDto artistDto) {
-        log.info("Signin 시작");
-        try {
-            Artist entity = dtoEntity(artistDto);
-            repository.signin(entity.getUsername(), entity.getPassword());
-            entity.getArtistId();
-            log.info("entity :: " + entity);
-            ArtistDto entityDto = entityDto(entity);
-
-            Optional<Artist> comprehensiveInfomationArtist = repository.findByUsername(entity.getUsername());
-            Long artistId = comprehensiveInfomationArtist.get().getArtistId();
-            Long artistFileIdSetting = entityDto.getArtistFileId();
-            log.info("artistFileIdSetting :: " + artistFileIdSetting);
-
-            log.info("============================================");
-            Long artistFileId = aritstFileRepository.findByArtistId(artistId);
-            log.info("artistFileId :: " + artistFileId);
-            List<ArtistFile> artistFile = aritstFileRepository.findAll();
-            log.info("artistFile :: " + artistFile);
-
-
-            // artistId and artistFileId
-            Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistId);
-
-
-
-            entityDto(comprehensiveInfomationArtist.get());
-            entityDto = entityDto(comprehensiveInfomationArtist.get());
-            String Token = provider.createToken(entity.getUsername(), repository.findByUsername(entity.getUsername()).get().getRoles());
-            entityDto.setToken(Token);
-
-
-            log.info("fileListResult ::: " + fileListResult);
-
-            if (fileListResult.isPresent()) {
-                fileListResult.get().getArtistFileId();
-
-                String uuid = fileListResult.get().getUuid();
-                String imgName = fileListResult.get().getImgName();
-                entityDto.setUuid(uuid);
-                entityDto.setImgName(imgName);
-            } else {
-                log.info("여기가 출력되면 이미지가 없어서 기본이미지 저장");
-                entityDto.setUuid("fd05e3c1-0eb2-4062-88be-8be96f833ab9");
-                entityDto.setImgName("aaa.jpg");
-
-            }
-
-            fileListResult.get().getArtistFileId();
-            String uuid = fileListResult.get().getUuid();
-            String imgName = fileListResult.get().getImgName();
-            entityDto.setUuid(uuid);
-            entityDto.setImgName(imgName);
-            log.info("리턴 직전");
-            return entityDto;
-        } catch (Exception e){
-            throw new SecurityRuntimeException("Invalid Artist-Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
-        }
-    }
 
     @Override
     public List<Artist> getAllData() {
@@ -315,6 +255,92 @@ public class ArtistServiceImpl extends AbstractService<Artist> implements Artist
         return new PageResultDto<>(result, fn);
     }
 
+    @Override
+    public ArtistDto signin(ArtistDto artistDto) {
+        log.info("Signin 시작");
+        try {
+            Artist entity = dtoEntity(artistDto);
+            repository.signin(entity.getUsername(), entity.getPassword());
+
+            Long artistFileId = aritstFileRepository.findByArtistFileId(entity.getArtistId());
+            log.info("artistFileId ::: " + artistFileId);
+
+            entity.getArtistId();
+//            List<Artist> artist = repository.findAll();
+//            log.info("artist ::: " + artist);
+
+            log.info("entity.getArtistFiles() ::: " + entity.getArtistFiles());
+//            entity.getArtistFiles();
+            log.info("entity :: " + entity);
+            log.info("===================");
+
+            ArtistDto entityDto = entityDto(entity);
+            entityDto.setArtistFileId(artistDto.getArtistFileId());
+            log.info("entityDto :: " + entityDto);
+            log.info("===================");
+            log.info(artistDto.getArtistFileId());
+            log.info(artistDto.getArtistFiles());
+            log.info(entity.getArtistFiles());
+            log.info(entityDto.getArtistFileId());
+            log.info(entityDto.getArtistFiles());
+            log.info("===================");
+
+            artistDto.getArtistId();
+            log.info("artistDto.getArtistId() :: " + artistDto.getArtistId());
+
+//            Long artistFileId = aritstFileRepository.findByArtistId(artistDto.getArtistId());
+//            log.info("artistFileId ::: --- " + artistFileId);
+
+//            Optional<Artist> comprehensiveInfomationArtist = repository.findByUsername(entity.getUsername());
+//            Long artistId = comprehensiveInfomationArtist.get().getArtistId();
+            Long artistFileIdSetting = entityDto.getArtistFileId();
+            log.info("artistFileIdSetting :: " + artistFileIdSetting);
+
+            log.info("============================================");
+//            Long artistFileId = aritstFileRepository.findByArtistId(artistId);
+//            log.info("artistFileId :: " + artistFileId);
+            List<ArtistFile> artistFile = aritstFileRepository.findAll();
+            log.info("artistFile :: " + artistFile);
+
+
+            // artistId and artistFileId
+//            Optional<ArtistFile> fileListResult = aritstFileRepository.findById(artistId);
+
+
+
+//            entityDto(comprehensiveInfomationArtist.get());
+//            entityDto = entityDto(comprehensiveInfomationArtist.get());
+            String Token = provider.createToken(entity.getUsername(), repository.findByUsername(entity.getUsername()).get().getRoles());
+            entityDto.setToken(Token);
+
+
+//            log.info("fileListResult ::: " + fileListResult);
+
+//            if (fileListResult.isPresent()) {
+//                fileListResult.get().getArtistFileId();
+
+//                String uuid = fileListResult.get().getUuid();
+//                String imgName = fileListResult.get().getImgName();
+//                entityDto.setUuid(uuid);
+//                entityDto.setImgName(imgName);
+//            } else {
+//                log.info("여기가 출력되면 이미지가 없어서 기본이미지 저장");
+//                entityDto.setUuid("fd05e3c1-0eb2-4062-88be-8be96f833ab9");
+//                entityDto.setImgName("aaa.jpg");
+
+//            }
+
+//            fileListResult.get().getArtistFileId();
+//            String uuid = fileListResult.get().getUuid();
+//            String imgName = fileListResult.get().getImgName();
+//            entityDto.setUuid(uuid);
+//            entityDto.setImgName(imgName);
+            log.info("리턴 직전");
+            return entityDto;
+        } catch (Exception e){
+            throw new SecurityRuntimeException("Invalid Artist-Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+    }
 
 }
 
