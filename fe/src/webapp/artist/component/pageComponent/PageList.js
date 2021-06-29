@@ -11,7 +11,7 @@ const PageList = ({ pageList, page, start, end, prev, next, type = '', keyword =
     };
 
     const list = pageList.map((i) => (
-        <button key={i} classsName="PageListBtn" onClick={() => movePage(i)}>
+        <button key={i} classsName="pageListBtn" onClick={() => movePage(i)}>
             {i}
         </button>
     ));
@@ -19,7 +19,7 @@ const PageList = ({ pageList, page, start, end, prev, next, type = '', keyword =
     return (
         <>
             {prev ? (
-                <button className="PageListBtn" onClick={() => movePage(start - 1)}>
+                <button className="pageListBtn" onClick={() => movePage(start - 1)}>
                     prev
                 </button>
             ) : (
@@ -27,7 +27,7 @@ const PageList = ({ pageList, page, start, end, prev, next, type = '', keyword =
             )}
             {list}
             {next ? (
-                <button className="PageListBtn" onClick={() => movePage(end + 1)}>
+                <button className="pageListBtn" onClick={() => movePage(end + 1)}>
                     next
                 </button>
             ) : (

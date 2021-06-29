@@ -1,10 +1,10 @@
-.SearchBarOption {
+.searchBarOption {
     background-color: red;
     border: 1px solid red;
     margin: 10px;
 }
 
-.SearchBar {
+.searchBar {
     background-color: orange;
     border: 1px solid red;
     margin: 10px;

@@ -154,7 +154,7 @@ const MyPage = () => {
                         <label htmlFor="artistFile">
                             <b>대표이미지</b>
                         </label>
-                        <td>
+                   
 
                             <div>
                                 <img src={'http://localhost:8080/artist_files/display?imgName=' + `${artistsFilesUuid}` + 's_' + `${artistsFilesimgName}`} />
@@ -163,17 +163,17 @@ const MyPage = () => {
                                 <br />
                                 <br />
                             </div>
-                        </td>
+                       
 
                         <label htmlFor="artistId">
                             <b>아이디번호</b>
                         </label>
-                        <td>{artistsState.artistId} </td>
+                        {artistsState.artistId} 
 
                         <label htmlFor="username">
                             <b>아이디</b>
                         </label>
-                        <td>{artistsState.username} </td>
+                        {artistsState.username} 
 
                         <label htmlFor="password">
                             <b>비밀번호</b>
@@ -183,7 +183,7 @@ const MyPage = () => {
                         <label htmlFor="name">
                             <b>이름</b>
                         </label>
-                        <td>{artistsState.name}</td>
+                        {artistsState.name}
 
                         <label htmlFor="phoneNumber">
                             <b>핸드폰번호</b>

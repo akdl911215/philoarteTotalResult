@@ -1,4 +1,4 @@
-.ArtistUpdateButton {
+.artistUpdateButton {
     background-color: #9deaf8;
     color: white;
     padding: 14px 50px;
@@ -8,7 +8,7 @@
     width: 10%;
     border-color: red;
 }
-.ArtistUpdateButton2 {
+.artistUpdateButton2 {
     background-color: #41ca86;
     color: white;
     padding: 14px 50px;

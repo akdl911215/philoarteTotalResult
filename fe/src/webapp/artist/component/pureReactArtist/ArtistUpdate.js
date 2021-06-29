@@ -115,10 +115,10 @@ const ArtistUpdate = () => {
                 </label>
                 <input type="text" placeholder="Enter Department" name="department" id="department" required onChange={handleChange} />
 
-                <button type="submit" className="ArtistUpdateButton">
+                <button type="submit" className="artistUpdateButton">
                     수정하기
                 </button>
-                <button className="ArtistUpdateButton2" onClick={artistUpdateList}>
+                <button className="artistUpdateButton2" onClick={artistUpdateList}>
                     목록으로
                 </button>
             </form>

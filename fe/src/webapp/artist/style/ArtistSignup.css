@@ -80,14 +80,14 @@ button:hover {
   }
 }
 
-.ArtistSignupHead {
+.artistSignupHead {
   border: 1px solid #ccc;
 }
 
-.ArtistSignupCheckbox {
+.artistSignupCheckbox {
   margin-bottom: 15px;
 }
 
-.ArtistSignupTermsPrivacy {
+.artistSignupTermsPrivacy {
   color: rgb(16, 32, 48);
 }

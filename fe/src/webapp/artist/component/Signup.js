@@ -72,9 +72,9 @@ const Signup = () => {
 
     return (
         <>
-            <form action="/action_page.php" className="ArtistSignupHead">
+            <form action="/action_page.php" className="artistSignupHead">
                 <div className="container">
-                    <h1>회원가입(Sign Up)</h1>
+                    <h2>회원가입(Sign Up)</h2>
                     <p>Please fill in this form to create an account.</p>
                     <hr />
                     <input type="file" name="file" id="reviewFileDtoList" className="md-textarea" rows="7" multiple={true} onChange={(e) => clickUpdate(e)}></input>
@@ -120,7 +120,7 @@ const Signup = () => {
 
                     <p>
                         By creating an account you agree to our{'PHILO-ARTE'}
-                        <a href="#" className="ArtistSignupTermsPrivacy">
+                        <a href="#" className="artistSignupTermsPrivacy">
                             Terms & Privacy
                         </a>
                     </p>

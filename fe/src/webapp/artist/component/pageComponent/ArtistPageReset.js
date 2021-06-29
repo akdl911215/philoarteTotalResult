@@ -10,7 +10,7 @@ const ArtistPageReset = () => {
     };
     return (
         <>
-            <button className="ArtistPageBtn" onClick={() => goReset()}>
+            <button className="artistPageBtn" onClick={() => goReset()}>
                 Reset
             </button>
         </>
